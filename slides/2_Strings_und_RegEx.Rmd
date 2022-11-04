@@ -1,5 +1,5 @@
 ---
-title: An R Markdown document converted from "2_Strings_und_RegEx.ipynb"
+title: 'An R Markdown document converted from "2_Strings_und_RegEx.ipynb"'
 output: html_document
 ---
 

@@ -1,5 +1,5 @@
 ---
-title: "An R Markdown document converted from 1_Einführung.ipynb"
+title: '"An R Markdown document converted from 1_Einführung.ipynb"'
 output:
   pdf_document: default
   html_document: default
