@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>B&#252;rgerservice - Fehler</title>
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <!-- CSS -->
+    <link href="https://www.gesetze-bayern.de/Styles/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://www.gesetze-bayern.de/Styles/nav.css" rel="stylesheet" />
+    <link href="https://www.gesetze-bayern.de/Styles/Site.css" rel="stylesheet" />
+    <!-- Javascript -->
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+</head>
+    <body>
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="row" id="header">
+                <div class="col-xs-12 col-sm-4">
+                    <a class="navbarItem" href="https://www.gesetze-bayern.de/" title="Zur Startseite von BAYERN.RECHT">
+                        <img src="https://www.gesetze-bayern.de/Images/logo_bayern-recht.png" class="img-responsive pull-left hidden-xs" alt="Logo Bayern.Recht" />
+                    </a>
+                </div>
+                <div id="portalLogo" class="col-xs-12 col-sm-8">
+                    <img src="https://www.gesetze-bayern.de/Images/logo_bayern.png" class="img-responsive pull-right hidden-xs" alt="Logo Bayern" />
+                    <img src="https://www.gesetze-bayern.de/Images/logo_xs_bayern.png" class="img-responsive pull-right visible-xs" alt="Logo Bayern" />
+                </div>
+            </div>
+            <div class="col-sm-5 col-lg-6" style="height:50px" />
+        </nav>
+        <div class="container">
+            <div class="row">
+                <div role="main" class="col-sm-12 col-lg-12">
+                    <div id="hinweis">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Unerwarteter Fehler</div>
+                            <div class="panel-body">
+                                <p>Sehr geehrte Benutzerin, sehr geehrter Benutzer,</p>
+                                <p>ein unerwarteter Fehler ist aufgetreten. Wir arbeiten bereits daran, die Ursache zu beheben.</p>
+                                <p>Bitte versuchen Sie es in wenigen Minuten erneut.</p>
+                                <p>Wir bedanken uns f&uuml;r Ihr Verst&auml;ndnis.</p>
+                                <button onclick="goBack()">Zur&uuml;ck</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

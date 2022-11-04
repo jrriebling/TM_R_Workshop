@@ -1,0 +1,44 @@
+---
+title: An R Markdown document converted from "Installationsanleitung.ipynb"
+output: html_document
+---
+
+# R installieren
+
+## Basis R
+
+Vorkompilierte R-Pakete für die gängigsten Betriebssysteme können auf der Webseite des [Comprehensive R Archive Network (CRAN)](https://cran.r-project.org/) heruntergeladen werden.
+Alternativ kann R auch über einen Paketmanager (z.B. [Anaconda](https://docs.anaconda.com/anaconda/user-guide/tasks/using-r-language/), [Chocolatey](https://community.chocolatey.org/packages/R.Project), [APT](https://sites.psu.edu/theubunturblog/installing-r-in-ubuntu/), etc.)
+Bei Problemen mit der Installation unter Windows finden sich [hier](https://cran.r-project.org/bin/windows/base/) weiterführende Informationen.
+
+
+## Zusätzliche Pakete
+
+Zusätzliche R Pakete können über den in `base` enthaltenen Paketmanager direkt von einem CRAN Repositoriumsserver heruntergeladen werden.
+Dies geschieht durch Ausführen des Befehls `install.packages()`.
+Beim ersten Mal kann ein naheliegender CRAN-Server ausgewählt werden.
+
+Alle für den Workshop notwendigen Pakete sind im Metapaket `tidyverse` enthalten.
+Hierbei handelt es sich um eine Sammlung von Text- und Datamining Werkzeugen die zum Teil stark von den grundlegenden R Konzepten abweichen. Folgende Eingabe auf der R-Eingabeaufforderung installiert die `tidyverse`-Pakete:
+
+```{r}
+install.packages("tidyverse")
+```
+
+## Integrated Development Environment
+
+Nach der Installation von R steht normalerweise nur der R Interpreter und der Kommandozeilenzugriff darauf zur Verfügung.
+Um eine effizientere Nutzung und komplexeren Code zu ermöglichen können entweder auf dem System vorhandene IDEs () oder Editoren () verwendet werden.
+
+Im Seminar wird das Jupyter Notebook als grafische Benutzeroberfläche und Entwicklungsumgebung genutzt.
+Die Unterlagen werden sowohl als Jupyter Notebook als auch als Plaintext (Markdown) und PDF Dateien zur Verfügung gestellt werden.
+
+# Dokumentation und Tutorials
+
+* [The R Manuals](https://cran.r-project.org/manuals.html). Hier insbesondere „An Introduction to R“ und „R Installation and Administration“.
+* 
+
+```{r}
+help(stringr)
+```
+

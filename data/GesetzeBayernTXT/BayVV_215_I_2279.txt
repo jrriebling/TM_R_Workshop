@@ -1,0 +1,733 @@
+ABek: Alarmierung im Rettungsdienst, Brand- und Katastrophenschutz in Bayern
+
+215-I
+Alarmierung im Rettungsdienst, Brand- und Katastrophenschutz in Bayern
+(Alarmierungsbekanntmachung – ABek)
+Bekanntmachung des Bayerischen Staatsministeriums des Innern, für Bau und Verkehr
+vom 12. Juli 2016, Az. ID2-2225-2-2-1
+(AllMBl. S. 1575)
+Zitiervorschlag: Bekanntmachung des Bayerischen Staatsministeriums des Innern, für Bau und Verkehr
+über die Alarmierung im Rettungsdienst, Brand- und Katastrophenschutz in Bayern
+(Alarmierungsbekanntmachung – ABek) vom 12. Juli 2016 (AllMBl. S. 1575), die durch Bekanntmachung
+vom 29. Juli 2020 (BayMBl. Nr. 461) geändert worden ist
+
+Inhaltsübersicht
+1.
+
+Einführung
+
+2.
+
+Alarmierungsplanung
+
+2.1
+
+Allgemeines zur Alarmierungsplanung
+
+2.1.1
+
+Zuständigkeit
+
+2.1.2
+
+Abstimmung der Alarmierungsplanungen
+
+2.1.3
+
+Grundsätze der Alarmierungsplanung
+
+2.1.4
+
+Einsatzstichwörter
+
+2.1.5
+
+Schlagwörter
+
+2.2
+
+Besonderheiten der Alarmierungsplanung im Rettungsdienst
+
+2.3
+
+Sanitätseinsatzleitung
+
+2.4
+
+Besonderheiten der Alarmierungsplanung der Bergwacht
+
+2.5
+
+Besonderheiten der Alarmierungsplanung der Feuerwehr
+
+2.5.1
+
+Allgemeines
+
+2.5.2
+
+Gebäude und Anlagen
+
+2.5.3
+
+Unbebaute Flächen
+
+2.5.4
+
+Verkehrswege
+
+2.5.5
+
+Fernleitungen
+
+2.5.6
+
+Gewässer
+
+2.5.7
+
+Brandmeldeanlagen
+
+2.6
+
+Besonderheiten der Alarmierungsplanung im Katastrophenschutz
+
+2.6.1
+
+Allgemeines
+
+2.6.2
+
+Führungsgruppe Katastrophenschutz – FüGK
+
+2.6.3
+
+Örtliche Einsatzleiter – ÖEL
+
+2.6.4
+
+Katastrophenschutz-Sonderpläne
+
+2.6.5
+
+Bundesanstalt Technisches Hilfswerk
+
+2.7
+
+Behandlung der Alarmierungsplanungen in den ILS
+
+2.7.1
+
+Einpflege
+
+2.7.2
+
+Änderungsdienst
+
+2.7.3
+
+Verzeichnis der Alarmierungspläne
+
+3.
+
+Alarmierung
+
+3.1
+
+Alarmauslösende Stellen
+
+3.2
+
+Alarmierungsmittel
+
+3.3
+
+Einsatzmittel
+
+3.4
+
+Alarmierung der Kreiseinsatzzentralen (KEZ)
+
+3.5
+
+Alarmierung der Kreisverwaltungsbehörden
+
+3.6
+
+Nachalarmierungen, Alarmierung in Sonderfällen
+
+3.6.1
+
+Nachalarmierungen
+
+3.6.2
+
+Alarmierung in Sonderfällen
+
+4.
+
+Schlussbestimmungen
+
+4.1
+
+Inkrafttreten, Außerkrafttreten
+
+4.2
+
+Übergangsregelung, Fortgeltung und Aufhebung von Vorschriften
+
+Anlage:
+
+Landesweit einheitlich festgelegte Einsatzstichwörter, Stand 15.03.2017
+
+1. Einführung
+1Das Gesetz über die Errichtung und den Betrieb Integrierter Leitstellen (ILSG) vom 25. Juli 2002 (GVBl.
+
+S. 318, BayRS 215-6-1-I), das zuletzt durch § 1 Nr. 192 der Verordnung vom 22. Juli 2014 (GVBl. S. 286)
+geändert worden ist, schreibt die Errichtung Integrierter Leitstellen (ILS) als alarmauslösende Stellen für
+Rettungsdienst und Feuerwehr vor. 2Es ist erforderlich, die Alarmierung im Rettungsdienst, im Brand- und
+Katastrophenschutz insgesamt und einheitlich zu regeln. 3Die bestehenden Alarmierungsplanungen sind an
+die aktuellen Gegebenheiten anzupassen sowie in bestimmten Zeitintervallen zu überprüfen. 4Für eine gut
+funktionierende Zusammenarbeit untereinander wird eine einheitliche Einsatzleitsoftware verwendet. 5Dies
+setzt voraus, dass landesweit einheitliche Standards (Einsatzstichwörter, Einsatzschlagwörter,
+Arbeitsprozesse, Auswertungskriterien, Handlungsroutinen u. a.) beachtet und die Einsatzmittel landesweit
+einheitlich bezeichnet werden. 6Als Hilfestellung wird durch das Staatsministerium des Innern, für Bau und
+Verkehr ein Merkblatt zur Alarmierungsplanung erstellt, in dem die einsatztaktischen Mindestanforderungen
+der Erstalarmierung zum jeweiligen Einsatzstichwort mit dazugehörigen Einsatzschlagwörtern beschrieben
+sind. 7Es wird über die Staatliche Feuerwehrschule Würzburg erhältlich sein.
+
+2. Alarmierungsplanung
+2.1 Allgemeines zur Alarmierungsplanung
+2.1.1 Zuständigkeit
+1Für die Alarmierungsplanungen im Brand- und Katastrophenschutz sind die Kreisverwaltungsbehörden, für
+
+die Alarmierungsplanungen des Rettungsdienstes die Zweckverbände für Rettungsdienst und
+Feuerwehralarmierung (ZRF) zuständig. 2Sie werden dabei von den Leitern der ILS, den Kreis- und
+Stadtbrandräten, den Leitern der Berufsfeuerwehren, den Kommandanten der Freiwilligen Feuerwehren,
+den Durchführenden des Rettungsdienstes, den THW-Ortsbeauftragten, allen staatlichen und kommunalen
+Stellen sowie von den Betreibern von Anlagen und Einrichtungen gemäß Art. 8 Abs. 2 des Bayerischen
+Katastrophenschutzgesetzes (BayKSG) unterstützt. Auf Art. 3 Abs. 1 Nr. 1 und 3, Art. 3a Abs. 1 Satz 1,
+Art. 3b Abs. 1 Satz 1, Art. 7 Abs. 2 Nr. 1 und Art. 8 Abs. 2 BayKSG wird verwiesen.
+
+2.1.2 Abstimmung der Alarmierungsplanungen
+1Die Alarmierungsplanungen der Kreisverwaltungsbehörden und der ZRF sind innerhalb des Bereichs einer
+
+ILS und zwischen benachbarten Leitstellenbereichen sowie den Vertretungsleitstellen aufeinander
+abzustimmen. 2Das Abstimmungsverfahren wird von der für die Alarmierungsplanung und deren Änderung
+zuständigen Stelle (Kreisverwaltungsbehörde oder ZRF) in die Wege geleitet. 3Die Leiter der ILS sind bei
+der Abstimmung der Alarmierungsplanungen zu beteiligen. 4Kommt es bei einer Abstimmung der
+Alarmierungsplanung zwischen mehreren Kreisverwaltungsbehörden, zwischen Kreisverwaltungsbehörden
+und einem ZRF oder zwischen mehreren ZRF zu keiner Einigung, entscheidet die Regierung oder in
+Einzelfällen das Staatsministerium des Innern, für Bau und Verkehr. 5Sind Kreisverwaltungsbehörden oder
+ZRF mit Sitz in verschiedenen Regierungsbezirken beteiligt, bestimmt das Staatsministerium des Innern, für
+Bau und Verkehr die zuständige Regierung oder kann selbst entscheiden. 6Für Anlagen, die mehrere
+Leitstellenbereiche überschreiten (z.B. Mineralölfernleitungen), ist sicherzustellen, dass jede ILS
+– über die komplette Alarmierungsplanung für die Anlage verfügt,
+– die anderen von der Anlage betroffenen ILS unverzüglich über Schadensfälle benachrichtigt,
+– im Schadenfall alle ILS, aus deren Zuständigkeitsbereich Einsatzmittel zur Schadensbewältigung zu
+alarmieren sind, sofort verständigt,
+– grundsätzlich nur Einsatzmittel in ihrem Leitstellenbereich alarmiert (Ausnahme: abweichende
+Vereinbarungen im Einzelfall).
+
+2.1.2.1 Abstimmung im Zuständigkeitsbereich einer Kreisverwaltungsbehörde
+Eine Abstimmung der Alarmierungsplanungen innerhalb des Zuständigkeitsbereichs einer
+Kreisverwaltungsbehörde ist insbesondere erforderlich, wenn die Alarmierungsplanungen
+– Einsatzmittel unterschiedlicher Fachdienste oder Organisationen betreffen,
+– die Einsatzmittel der Feuerwehren verschiedener Gemeinden vorsehen,
+– die Gebiete verschiedener Gemeinden berühren,
+– die Einbeziehung von Werkfeuerwehren außerhalb des Betriebs oder der Einrichtungen, zu deren
+Schutz sie aufgestellt wurden, vorsehen,
+– den Einsatz gemeindlicher Feuerwehren in Betrieben oder Einrichtungen mit Werkfeuerwehren vorsehen.
+
+2.1.2.2 Abstimmung zwischen den Kreisverwaltungsbehörden
+Eine Abstimmung der Alarmierungsplanungen zwischen den Kreisverwaltungsbehörden ist insbesondere
+erforderlich, wenn
+– Anlagen, Gebäude, Objekte, Verkehrswege, Gewässer oder sonstige Einrichtungen, für die eine
+Alarmierungsplanung erstellt wird, den Zuständigkeitsbereich einer Kreisverwaltungsbehörde
+überschreiten,
+– zu erwarten ist, dass Brände oder Unfälle in Anlagen, Gebäuden, Objekten oder sonstigen Einrichtungen
+sich auch im Zuständigkeitsbereich einer benachbarten Kreisverwaltungsbehörde auswirken,
+– eine Kreisverwaltungsbehörde Einsatzmittel aus dem Zuständigkeitsbereich einer anderen
+Kreisverwaltungsbehörde in ihre Alarmierungsplanung aufnimmt.
+
+2.1.2.3 Abstimmung zwischen den Kreisverwaltungsbehörden und dem ZRF
+
+Eine Abstimmung der Alarmierungsplanungen zwischen den Kreisverwaltungsbehörden und dem ZRF ist
+insbesondere erforderlich, wenn die Alarmierungsplanungen neben Einsatzmitteln anderer Fachdienste
+auch Einsatzmittel der Durchführenden des Rettungsdienstes betreffen.
+
+2.1.2.4 Abstimmung zu benachbarten Bundesländern und Staaten
+Eine Abstimmung der Alarmierungsplanungen zu benachbarten Bundesländern und/oder Staaten ist
+insbesondere erforderlich, wenn
+– Anlagen, Gebäude, Objekte, Verkehrswege, Gewässer oder sonstige Einrichtungen, für die eine
+Alarmierungsplanung erstellt wird, den Zuständigkeitsbereich eines benachbarten Bundeslandes und/oder
+Staates betreffen,
+– zu erwarten ist, dass Brände oder Unfälle in Anlagen, Gebäuden, Objekten oder sonstigen Einrichtungen
+sich auch im Zuständigkeitsbereich eines benachbarten Bundeslandes und/oder Staates auswirken,
+– eine Kreisverwaltungsbehörde oder ein ZRF Einsatzmittel aus dem Zuständigkeitsbereich eines
+benachbarten Bundeslandes und/oder Staates in die Alarmierungsplanung aufnimmt.
+
+2.1.3 Grundsätze der Alarmierungsplanung
+1Zweck der Alarmierungsplanung ist eine möglichst schnelle und der jeweiligen Situation angemessene
+
+Alarmierung der bei einem Notruf, einer bestimmten Lage, einem bestimmten Objekt zu einem bestimmten
+Zeitpunkt und im ersten Zugriff benötigten Einsatzmittel und deren Geräte. 2Daher sind grundsätzlich immer
+die am schnellsten verfügbaren geeigneten Einsatzmittel, unabhängig von bestehenden
+Verwaltungsgrenzen, einzuplanen. 3Weiterhin ist bei der Alarmierungsplanung sicherzustellen, dass für
+jedes Einsatzstichwort eine Bereichsfolge/Eindringtiefe erstellt wird, bei der auch Duplizitätsfälle
+berücksichtigt werden. 4Bei der Zusammenstellung von folgenden organisatorischen Einheiten kann davon
+abgewichen werden:
+– Gefahrgutzug,
+– Feuerwehr-Hilfeleistungskontingente,
+– Hilfeleistungskontingente im Sanitäts- und Betreuungsdienst,
+– Wasserrettungszüge Bayern,
+– THW-Hilfeleistungskontingente.
+5Die Alarmierungsplanung ist so aufzustellen, dass dabei alle Vorschriften, wie z.B. die Feuerwehr-
+
+Dienstvorschriften, eingehalten werden. 6Die Alarmierungsplanung ist die Zuordnung von Einsatzmitteln und
+Maßnahmen zu
+– Einsatzstichwörtern,
+– Schlagwörtern,
+– Objekten/Gebieten,
+– Zeiträumen,
+– Mannschaftsstärke.
+7Die Alarmierung ist flächendeckend mithilfe des Geografischen Informationssystems (GIS) in den ILS zu
+
+planen. 8Dazu sind als Zonen die unterschiedlichen Zuständigkeitsbereiche der einzelnen BOS-Einheiten
+grafisch zu erfassen. 9Nur so kann eine flächendeckende Disposition und Alarmierung erreicht werden.
+
+10Die alleinige Planung auf der Grundlage von Orten und Ortsteilen ist nicht ausreichend und daher nur als
+
+Rückfallebene zu erstellen. 11Über die flächendeckende Planung hinaus sind objekt- und ereignisbezogene
+Alarmierungsplanungen – soweit erforderlich – anzulegen (z.B. Einsatzplanung für einen Industriebetrieb,
+Eisenbahnunfall, siehe auch Nrn. 2.2, 2.3 und 2.4). 12Es ist anzustreben, die Alarmierungsplanung auf
+Fahrzeuge und kleinere Organisationseinheiten (Schleifen) bezogen anzulegen, um eine möglichst
+bedarfsgerechte Alarmierung zu erreichen. 13Die tageszeitlich schwankende Verfügbarkeit von
+Einsatzkräften ist dabei zu berücksichtigen und im Einsatzleitsystem zu hinterlegen. 14Unabhängig von der
+Alarmierung gemäß der Alarmierungsplanung sind Nachalarmierungen durch die ILS jederzeit möglich
+(siehe hierzu Nr. 3.6). 15Die Regierungen sowie das Staatsministerium des Innern, für Bau und Verkehr
+können die Umsetzung dieser Bekanntmachung (örtliche Alarmierungsplanung) jederzeit überprüfen und
+ggf. weitere Maßnahmen zur Einhaltung der Regelungen dieser Bekanntmachung treffen.
+
+2.1.4 Einsatzstichwörter
+1Die Einsatzstichwörter sind im Einsatzleitsystem die Steuerbefehle für die Disposition von Einsatzmitteln.
+2Zusammen mit den Angaben zu Zeit und Ort des Geschehens werden in Abhängigkeit vom
+
+Einsatzstichwort mit dem zugehörigen Schlagwort Einsatzmittel alarmiert und weitergehende Maßnahmen
+wie zum Beispiel die Benachrichtigung von Behörden und Organisationen eingeleitet. 3Der Katalog der für
+das Einsatzleitsystem zugelassenen Einsatzstichwörter und Schlagwörter muss für ganz Bayern einheitlich
+sein und wird vom Staatsministerium des Innern, für Bau und Verkehr geführt und fortgeschrieben. 4Die
+Einsatzstichwörter mit den dazugehörigen Schlagwörtern (siehe Anlage) sind so konzipiert, dass mit ihnen
+alle Erfordernisse einer lagebezogenen Alarmierungsplanung erfüllt werden können. 5Sie beziehen sich auf
+gemeldete Sachverhalte oder Ereignisse und nicht auf konkrete Objekte, Gebiete oder Zeiträume. 6Welche
+und wie viele Einsatzmittel, Geräte und Einsatzkräfte einem bestimmten Einsatzstichwort und Schlagwort
+zur Alarmierung zugeordnet werden und welche sonstigen Maßnahmen bei dieser EinsatzstichwortSchlagwort-Kombination einzuleiten sind, richtet sich nach den örtlichen Verhältnissen, wobei die
+angegebenen Mindestanforderungen erfüllt sein müssen. 7Einheitliche Vorgaben, welche
+Einsatzmittelketten durch eine bestimmte Einsatzstichwort-Schlagwort-Kombination ausgelöst werden,
+bestehen – bis auf die Mindestanforderungen – daher nicht. 8Vielmehr ist bei der Alarmierungsplanung von
+den einzelnen Kreisverwaltungsbehörden und ZRF unter Berücksichtigung der örtlichen Verhältnisse
+festzulegen, welche Einsatzmittelketten mit dem jeweiligen Einsatzstichwort und -schlagwort verknüpft sind.
+9Die Einsatzstichwörterfür Rettungsdienst und Feuerwehr (Brand und THL) können additiv verwendet
+werden. 10Zusätzlich können die Einsatzstichwörter für Rettungsdienst und Feuerwehr mit den sonstigen
+Einsatzstichwörtern und den Einsatzstichwort-Modulen (siehe Anlage) kombiniert werden. 11Um unnötige
+Mehrfachalarmierungen von gleichen Einsatzmitteln zu vermeiden, können die Einsatzstichwörter Brand,
+ABC und THL nicht miteinander kombiniert werden. 12Somit ist eine dem Meldebild angepasste und flexible
+Alarmierung gewährleistet. 13Wie viele und welche Einsatzmittel und Einsatzkräfte im Einzelfall alarmiert
+werden, ergibt sich im Einsatzleitsystem aus der Kombination
+– der Alarmierungsplanung,
+– eines bestimmten oder mehrerer Einsatzstichwörter,
+– additiver Einsatzmittelketten zu Schlagwörtern,
+– eines Objekts oder Gebiets,
+– des Alarmierungszeitpunkts.
+
+2.1.5 Schlagwörter
+1Jedem Einsatzstichwort ist eine bestimmte Anzahl von Schlagwörtern zugeordnet. 2Die Schlagwörter
+
+sollen dem Disponenten in der ILS dabei helfen, das Ergebnis seiner Notrufabfrage dem zutreffenden
+Einsatzstichwort zuzuordnen. 3Es wurde auf sinnfällige und umgangssprachlich „griffige“ Schlagwörter
+geachtet. 4Beispiele: Einsatzstichwort „B 2“, mögliche Schlagwörter: „Bahndamm“, „Gartenhütte,
+Schuppen“, „PKW“ oder Einsatzstichwort „RD 2“, mögliche Schlagwörter „Atmung / vitale Bedrohung“,
+„Trauma / vitale Bedrohung – Starke Blutung“. 5Für den Rettungsdienst sowie den Brand- und
+
+Katastrophenschutz wird im Einsatzleitsystem ein landesweit einheitlicher Grundbestand an Schlagwörtern
+hinterlegt, der vom Staatsministerium des Innern, für Bau und Verkehr in Abstimmung mit den Vertretern
+der Feuerwehren, Vertretern der Kreisverwaltungsbehörden, den ZRF und den Durchführenden des
+Rettungsdienstes regelmäßig weiterentwickelt wird. 6Damit wird sichergestellt, dass bayernweit geltende
+Vorgaben wie beispielsweise der Notarzt-Indikationenkatalog in den Schlagwörtern und in der Folge in den
+Einsatzstichwörtern umgesetzt werden. 7Darüber hinaus steht es dem jeweiligen ZRF frei, zusätzliche
+Schlagwörter für die Einsatztypen Infoeinsatz und Katastrophenschutz zu hinterlegen. 8Die Festlegung von
+Einsatzmittelketten und Maßnahmen im Rahmen der Alarmierungsplanung bezieht sich immer auf die
+Einsatzstichwörter und Schlagwörter.
+
+2.2 Besonderheiten der Alarmierungsplanung im Rettungsdienst
+1Der ZRF legt fest, welche Einsatzmittelketten und Maßnahmen mit einem bestimmten Einsatzstichwort
+
+bzw. Schlagwort des Rettungsdienstes verknüpft werden. 2Dabei sind das Bayerische
+Rettungsdienstgesetz, die dazu ergangenen Verordnungen und der jeweils aktuelle NotarztIndikationenkatalog sowie weitere verbindliche Vorgaben des Staatsministeriums des Innern, für Bau und
+Verkehr zu beachten. 3Danach ist grundsätzlich das am schnellsten verfügbare geeignete Einsatzmittel des
+öffentlichen Rettungsdienstes einzusetzen. 4Zu Notfalleinsätzen werden Notarztwagen, NotarztEinsatzfahrzeuge, Rettungswagen, Luftrettungsmittel sowie im Bedarfsfall Sonderfahrzeuge und
+Sondergeräte des Rettungsdienstes (insbesondere der Berg- und Wasserrettung) eingesetzt. 5Es wird
+empfohlen besondere Alarmierungsplanungen für größere oder komplexe Wasserflächen zu erstellen, um
+die örtlichen Verhältnisse mit besetzten Wachen der Wasserrettung oder verkürzte Rüstzeiten durch
+Einsatzmittel der Wasserrettung nahe am Schadensgebiet zu berücksichtigen. 6Dabei sind neben dem
+automatisierten Routing auch Zugänglichkeiten zum jeweiligen Gewässer zu berücksichtigen. 7Die schnellst
+verfügbaren Einsatzmittel werden in der Regel durch Standortfeststellungen (GPS) in Kombination mit
+entsprechenden Routingtaktiken durch den Leitrechner vorgeschlagen. 8Die Taktiken sollen dabei in der
+Eindringtiefe so gefasst sein, dass das übliche rettungsdienstliche Aufkommen auch in Duplizitätsfällen
+immer zu einem Vorschlag des Leitrechners führt. 9Große Schadensszenarien und die Rückfallebene (z.B.
+bei Ausfall des Routingservers) müssen durch die additive Festlegung von Bereichsfolgen mindestens auf
+Ebene der Gemeinden abgedeckt werden. 10Mit Einführung der Vernetzung der Leitstellen und der
+dynamischen Datenverteilung ist es notwendig, dass sich benachbarte Leitstellenbereiche intensiv in Bezug
+auf Änderungen und Ergänzungen relevanter Teile der Datenversorgung (z.B. im Bereich der verwendeten
+Dienststellen) austauschen. 11Nur auf diese Art ist gewährleistet, dass in der Rückfallebene bzw. bei
+großen Schadensszenarien die Einsatzmittel durch den Leitrechner gefunden werden können. 12Für den
+Fall, dass die im Regelfall schnellst verfügbaren Einsatzmittel im konkreten Fall nicht oder nicht schnell
+genug eingesetzt werden können, sollen im Rahmen der Alarmierungsplanung Bereichsfolgen
+(Rückfallebene zur GPS-Übermittlung) für benachbarte Standorte festgelegt werden. 13Die Bereichsfolge ist
+die Reihenfolge der Wachstandorte/Dienststellen, auf deren Grundlage das Einsatzleitsystem das schnellst
+verfügbare Einsatzmittel vorschlägt. 14Nur so ist eine Rückfallebene für das automatische Routing des
+Einsatzleitsystems gegeben. 15Bei der Alarmierungsplanung wird der ZRF maßgeblich von den
+Durchführenden des Rettungsdienstes und dem Betreiber der ILS unterstützt. 16Es ist zu prüfen, ob für
+bestimmte Ereignisse oder für bestimmte bauliche Anlagen, Objekte sowie Straßen mit getrennten
+Richtungsfahrbahnen oder sonstige Sonderfälle besondere Alarmierungsplanungen des Rettungsdienstes
+aufgestellt bzw. an die aktuellen Gegebenheiten/Möglichkeiten angepasst werden müssen. 17Der
+Sonderbedarf bei Großschadenslagen gemäß Art. 19 Abs. 1 BayRDG ist durch den ZRF in die
+Alarmierungsplanung einzubeziehen.
+
+2.3 Sanitätseinsatzleitung
+Eine Sanitätseinsatzleitung – Organisatorischer Leiter (OrgL) und Leitender Notarzt (LNA) – ist
+entsprechend § 14 Abs. 1 AVBayRDG in die Alarmierungsplanung aufzunehmen.
+
+2.4 Besonderheiten der Alarmierungsplanung der Bergwacht
+1Für Einsätze im Gebirge und in Höhlen wird zunächst die zuständige Bergrettungswache und das Modul
+
+EL BWB alarmiert. 2Im Falle des Vorliegens einer Notarztindikation legt der Einsatzleiter Berg- und
+Höhlenrettung neben der in der Alarm- und Ausrückeordnung (AAO) gültigen Erstalarmierung zusätzlich
+fest, welcher Notarzt (Land-, Luft-, Bergrettung) zum Einsatz kommt. 3Nach der ersten Lageerkundung
+
+erfolgt durch ihn die Nachforderung weiterer Einsatzmittel. 4Bei Einsätzen in Zuständigkeitsgebieten der
+Landrettung, bei denen regelmäßig die Unterstützung der Berg- und Höhlenrettung notwendig wird, kann
+standardmäßig das Modul EL BWB hinzu alarmiert werden. 5Im Falle technischer Störungen an
+Seilbahnanlagen ohne Personenschaden wird zunächst nur das Modul EL BWB alarmiert – mit dem
+zuständigen Einsatzleiter Berg- und Höhlenrettung wird das weitere Vorgehen abgestimmt.
+
+2.5 Besonderheiten der Alarmierungsplanung der Feuerwehr
+2.5.1 Allgemeines
+1Für jede Einsatzstichwort-Schlagwort-Kombination für die Feuerwehr sind die zur Schadensbewältigung
+
+voraussichtlich erforderlichen Einsatzmittel einzuplanen. 2Die zuständige Ortsfeuerwehr ist immer in die
+Einsatzmittelkette aufzunehmen. 3Für den Fall, dass die im Regelfall schnellst verfügbaren Einsatzmittel im
+konkreten Fall nicht oder nicht schnell genug eingesetzt werden können, sollen im Rahmen der
+Alarmierungsplanung Bereichsfolgen für weitere Feuerwehren/Dienststellen (auch über Gemeinde- und
+Landkreisgrenzen sowie Leitstellenbereiche hinweg) festgelegt werden. 4Das Einsatzleitsystem greift
+entsprechend der festgelegten Bereichsfolgen auf die geeigneten und am schnellsten verfügbaren
+Einsatzmittel weiterer Feuerwehren/Dienststellen zu. 5Einer Zuweisung von Einsatzbereichen im Sinn des
+Art. 17 Abs. 3 BayFwG bedarf dies nicht. 6Soweit jedoch Feuerwehren formell zusätzliche Einsatzbereiche
+zugewiesen werden, ist das in Art. 17 Abs. 3 Satz 1 BayFwG vorgesehene Verfahren zu beachten. 7Soweit
+bestimmte Einsatzstichwörter bzw. Schlagwörter aufgrund der örtlichen Verhältnisse nicht relevant sind
+(z.B. „B Schienentunnel“), wird dafür keine Alarmierungsplanung aufgestellt.
+
+2.5.2 Gebäude und Anlagen
+1Für alle Gebäude und Gebäudekomplexe, die Sonderbauten im Sinn des Bauordnungsrechts sind, ist zu
+
+prüfen, ob eine eigene Alarmierungsplanung zu erstellen ist bzw. diese an die aktuellen
+Gegebenheiten/Möglichkeiten angepasst werden muss. 2Für bauliche Anlagen mit größerem
+Gefahrenpotential und Errichtungs- und/oder Betriebsgenehmigungen nach anderen Rechtsvorschriften als
+dem Bauordnungsrecht (z.B. Gentechnikgesetz) ist in jedem Fall eine objektbezogene Alarmierungsplanung
+zu erstellen. 3Für sonstige Anlagen ist eine Alarmierungsplanung aufzustellen, wenn erhebliches
+Gefahrenpotential vorliegt oder besonderes Einsatzpotential erforderlich ist. 4Krankenhausalarmplanungen
+nach Art. 8 Abs. 1 BayKSG sind bei der Alarmierungsplanung zu berücksichtigen.
+
+2.5.3 Unbebaute Flächen
+1Für unbebaute Flächen (z.B. Wälder, Felder, Wiesen, Brachland) ist eine allgemeine Alarmierungsplanung
+
+aufzustellen. 2Besondere Bedingungen (z.B. Naturschutzgebiet) und besondere Schwierigkeiten bei einer
+Brandbekämpfung oder Hilfeleistung (z.B. im Sumpfgebiet) sind bei der Alarmierungsplanung durch die
+Einbindung der erforderlichen Einsatzmittel und Maßnahmen zu berücksichtigen. 3Für Wälder ist die
+Gemeinsame Bekanntmachung der Bayerischen Staatsministerien für Ernährung, Landwirtschaft und
+Forsten und des Innern über Richtlinien zur Waldbrandabwehr vom 9. April 2013 (AllMBl. S. 189) zu
+berücksichtigen. 4Bei Bränden im Gebirge wird neben den Einsatzeinheiten der Feuerwehr das Modul
+EL BWB alarmiert. 5Mit dem Einsatzleiter Berg- und Höhlenrettung erfolgt die Abstimmung der
+erforderlichen Maßnahmen zur Transportunterstützung sowie zur rettungsdienstlichen und -technischen
+Einsatzabsicherung. 6Auf Nachforderung durch ihn werden weitere Einsatzmittel der Berg- und
+Höhlenrettung alarmiert.
+
+2.5.4 Verkehrswege
+2.5.4.1 Straßen
+1Für Bundes-, Staats- und Kreisstraßen ist eine Alarmierungsplanung zu erstellen, falls dies einsatztaktisch
+
+erforderlich ist. 2Sie erfolgt nach den Straßennummern und der Kilometrierung. 3Werden künftig andere
+Systeme eingeführt, ist die Planung daran anzupassen. 4Soweit die Straßen baulich getrennte
+Richtungsfahrbahnen haben, erfolgt die Alarmierungsplanung zwischen Anschlussstellen und unterschieden
+nach Richtungsfahrbahnen.
+
+2.5.4.2 Bundesautobahnen
+
+1Für Bundesautobahnen ist eine Alarmierungsplanung zu erstellen. 2Sie erfolgt nach den Nummern der
+
+Bundesautobahnen, unterschieden nach Richtungsfahrbahnen, zwischen Anschlussstellen und nach der
+Kilometrierung. 3Eine Planung ist grundsätzlich zwischen zwei Anschlussstellen durchzuführen. 4Werden
+künftig andere Systeme eingeführt, ist die Planung daran anzupassen.
+
+2.5.4.3 Eisenbahnen
+1Für Bahnstrecken ist eine Alarmierungsplanung zu erstellen; sie erfolgt dabei
+
+– nach Streckenabschnitten zwischen Bahnhöfen oder Haltepunkten,
+– nach Streckennummern (mehrgleisige Bahnstrecken können verschiedene Streckennummern haben),
+– nach der Kilometrierung der Bahnstrecken,
+– unter Berücksichtigung topografischer Gesichtspunkte (Flüsse mit Brücken, Berge mit Tunnel usw.) und
+– unter Berücksichtigung der Zufahrtsmöglichkeit zu den Bahnstrecken und der einsatztaktischen
+Überlegungen (Stärke und Ausrüstung der Feuerwehren).
+2Für besondere Bauwerke wie größere Brücken, Tunnels und Bahnübergänge mit erfahrungsgemäß
+
+größerem Gefährdungspotential sind zusätzliche Alarmierungsplanungen erforderlich. 3Bei der
+Alarmierungsplanung im Eisenbahnbereich ist für alle Einsatzstichwörter dafür Sorge zu tragen, dass als
+erste Maßnahme die zuständige Notfallleitstelle benachrichtigt wird, um möglichst früh
+Sicherungsmaßnahmen auf der betroffenen Strecke einzuleiten. 4Die Alarmierung der Notfallmanager für
+Bahnstrecken, für die die Deutsche Bahn AG das Notfallmanagement durchführt, erfolgt durch die
+Notfallleitstellen der Deutschen Bahn AG.
+
+2.5.5 Fernleitungen
+1Für Fernleitungen, in denen gefährliche Gase oder Flüssigkeiten (brennbar, giftig etc.) gefördert werden, ist
+
+– ggf. im Rahmen von Katastrophenschutz-Sonderplänen – eine Alarmierungsplanung zu erstellen. 2Sie
+erfolgt in Streckenabschnitten zwischen Absperrorganen (Schieber) und nach der Kilometrierung. 3Bei
+Bündelung mehrerer Leitungen sind getrennte Alarmierungsplanungen dann vorzusehen, wenn in den
+Leitungen Stoffe unterschiedlicher einsatztaktischer Relevanz (z.B. Gase oder Flüssigkeiten) transportiert
+werden.
+
+2.5.6 Gewässer
+1Für Bundeswasserstraßen und die weiteren Gewässer erster Ordnung (im Sinn des Art. 2 Abs. 1 Nr. 1
+
+BayWG) ist eine Alarmierungsplanung zu erstellen. 2Sie erfolgt bei Bundeswasserstraßen und Flüssen nach
+der Kilometrierung. 3Bei den übrigen Gewässern sind geeignete Alarmierungsplanungen zu erstellen,
+soweit dies aufgrund ihrer Größe, Unübersichtlichkeit und der Zugänglichkeit des Ufers angezeigt ist.
+4Bereits vorhandene Alarmierungsplanungen sind auf die aktuellen Gegebenheiten/Möglichkeiten hin zu
+überprüfen und gegebenenfalls anzupassen.
+
+2.5.7 Brandmeldeanlagen
+1Für Gebäude oder Anlagen mit Brandmeldeanlagen ist jeweils eine eigene Alarmierungsplanung
+
+aufzustellen. 2Der Betreiber der Brandmeldeanlage soll über den Inhalt der Alarmierungsplanung informiert
+werden. 3Brandmeldeanlagen, deren Errichtung nach einer öffentlich-rechtlichen Vorschrift vorgeschrieben
+ist oder angeordnet wurde (notwendige Brandmeldeanlagen), sind an die zuständige behördlich benannte
+alarmauslösende Stelle aufzuschalten. 4Die Brandmeldung muss automatisch dorthin weitergeleitet werden.
+5Behördlich benannte alarmauslösende Stelle ist ab dem Zeitpunkt ihrer Betriebsaufnahme ausschließlich
+die örtlich zuständige ILS. 6Die Aufschaltung nicht notwendiger Brandmeldeanlagen auf die ILS soll
+gestattet werden, wenn die Alarmübertragungsgeräte den Anforderungen entsprechen, die an notwendige
+Brandmeldeanlagen gestellt werden (z.B. bezüglich der übermittelten Datentelegramme). 7Die
+Nummerierung der an die Alarmübertragungsanlagen angeschlossenen Brandmeldeanlagen erfolgt nach
+
+einer landesweit einheitlichen Systematik. 8Dabei bleibt es dem Betreiber einer ILS freigestellt, bei der
+Zusammenlegung bereits bestehender verschiedener Alarmübertragungsanlagen die Melder im
+Leitstellenbereich neu zu nummerieren. 9Zur Unterscheidung der einzelnen Melder im Leitstellenverbund
+Bayern wird folgende Systematik verwendet:
+– Nummer zur Bezeichnung des Leitstellenbereichs (zweistellig, nach der Reihenfolge des § 1
+AVBayRDG),
+– Nummer zur Bezeichnung der Alarmempfangsanlage im Leitstellenbereich (zweistellig),
+– Nummer zur Bezeichnung der angeschlossenen Brandmeldeanlage (vierstellig),
+– Bindestrich,
+– bis zu sechsstellige Linien- und Zusatznummerierung.
+
+2.6 Besonderheiten der Alarmierungsplanung im Katastrophenschutz
+2.6.1 Allgemeines
+Alle im Rahmen der Erstellung von Alarmierungsplänen im Brand- und Katastrophenschutz eingeplanten
+Einsatzmittel sind mit näheren Angaben (Adresse, Erreichbarkeit, Ansprechpartner usw.) durch die
+zuständige Kreisverwaltungsbehörde zu erfassen und im „Allgemeinen Katastrophenschutzplan“ bzw. im
+EDV-System GeoKAT aufzunehmen.
+
+2.6.2 Führungsgruppe Katastrophenschutz – FüGK
+1Um die jederzeitige Handlungsfähigkeit der Katastrophenschutzbehörde sicherzustellen, sind mindestens
+
+fünf entscheidungsbefugte Vertreter der Katastrophenschutzbehörde als so genannte „Ansprechpartner
+FüGK“ zu benennen. 2Ein Ansprechpartner FüGK ist von der ILS zu alarmieren, wenn zu erwarten oder
+nicht auszuschließen ist, dass zur Bewältigung eines Schadensereignisses die einheitliche Leitung durch
+die Katastrophenschutzbehörde gemäß Art. 1 Abs. 2 in Verbindung mit Art. 5 BayKSG oder das
+Tätigwerden eines Örtlichen Einsatzleiters nach Art. 15 BayKSG erforderlich ist. 3Hierzu werden die
+Ansprechpartner FüGK unter den entsprechenden Einsatzstichwörtern in die Alarmierungsplanung
+eingebunden. 4Die Entscheidung, bei welchen Einsatzstichwörtern die Kreisverwaltungsbehörde als
+Katastrophenschutz- bzw. Sicherheitsbehörde zu alarmieren ist, trifft diese selbst. 5Die
+Kreisverwaltungsbehörde stellt der ILS die für die Alarmierung erforderlichen Angaben zur Verfügung und
+aktualisiert diese im Fall von Veränderungen unverzüglich. 6Weitere Mitglieder der FüGK werden bei Bedarf
+auf Veranlassung des erstalarmierten Ansprechpartner FüGK durch die ILS alarmiert (vgl. Anlage,
+Einsatzstichwort-Modul FüGK). 7Die Ansprechpartner FüGK sind mit Funkmeldeempfängern oder
+Mobiltelefonen auszustatten. 8Für die Regierungen und das Staatsministerium des Innern, für Bau und
+Verkehr gelten gesonderte Regelungen.
+
+2.6.3 Örtliche Einsatzleiter – ÖEL
+1Die von der Katastrophenschutzbehörde gemäß Art. 6 BayKSG vorab benannten „Örtlichen Einsatzleiter“
+
+sind in die Alarmierungspläne aufzunehmen, indem sie bei den entsprechenden Einsatzstichwörtern als
+Einsatzmittel hinterlegt werden. 2Die Hinterlegung des ÖEL als Einsatzmittel muss für Schadenslagen
+erfolgen, die erwarten lassen, dass
+– aufgrund der zu alarmierenden Einsatzkräfte und Organisationen Koordinierungsbedarf entstehen wird,
+– mit einer größeren Zahl an gefährdeten oder geschädigten Personen zu rechnen ist,
+– mit außergewöhnlich hohen Schäden zu rechnen ist,
+– mit erheblichen Auswirkungen auf die Umgebung oder Umwelt zu rechnen ist.
+
+2.6.4 Katastrophenschutz-Sonderpläne
+1Die Katastrophenschutzbehörden legen bei Bedarf (z.B. für bestimmte Objekte oder Ereignisse)
+
+Katastrophenschutz-Sonderpläne an. 2Sie unterscheiden sich von der sonstigen Alarmierungsplanung,
+insbesondere im Brandschutz, durch ihren Umfang und dadurch, dass die Alarmierung von der ILS in jedem
+Fall entsprechend den Festlegungen in den Katastrophenschutz-Sonderplänen unverändert und vollständig
+durchzuführen ist.
+
+2.6.5 Bundesanstalt Technisches Hilfswerk
+1Gemäß § 1 Abs. 2 Nr. 3 des Gesetzes über das Technische Hilfswerk (THW-Gesetz – THWG) gehört es
+
+zu den Aufgaben des THW, bei der Bekämpfung von Katastrophen, öffentlichen Notständen und
+Unglücksfällen größeren Ausmaßes auf Anforderung der für die Gefahrenabwehr zuständigen Stellen
+technische Hilfe zu leisten. 2Darüber hinaus steht das THW auch für die technische Hilfeleistung bei
+anderen Unglücksfällen (z.B. Verkehrsunfälle, Bergung von Verschütteten nach Explosionen) zur
+Verfügung. 3Das THW soll deshalb in die Alarmierungsplanung aufgenommen werden, wenn es den
+Schadensort schneller mit der erforderlichen Geräteausrüstung erreicht als die nächstgelegene,
+ausreichend ausgerüstete Feuerwehr. 4Zusammen mit dem THW ist dabei grundsätzlich die Feuerwehr
+einzuplanen. 5Die Bereitschaftsdienste des THW an Bundesautobahnen bleiben davon unberührt und
+richten sich nach gesondert getroffenen Regelungen. 6Einheiten des THW mit Booten oder Tauchergruppen
+sind für Einsätze bei Unfällen auf Gewässern einzuplanen, soweit die Wasserwacht im Bayerischen Roten
+Kreuz (BRK), die Deutsche Lebens-Rettungs-Gesellschaft (DLRG), der Freiwillige Seenot-Dienst e. V.
+(FSD) oder die Feuerwehren nicht mit geeigneten Mitteln und in der gleichen Zeit eingesetzt werden
+können.
+
+2.7 Behandlung der Alarmierungsplanungen in den ILS
+2.7.1 Einpflege
+1Die Kreisverwaltungsbehörden und die ZRF haben die ILS unverzüglich über ihre Alarmierungsplanungen
+
+und den Inhalt des Allgemeinen Katastrophenschutzplans (EDV-System GeoKAT) zu unterrichten. 2In den
+ILS sind die Alarmierungsplanungen unverzüglich in das Einsatzleitsystem nach den Vorgaben des
+Staatsministeriums des Innern, für Bau und Verkehr einzupflegen. 3Alle im Rahmen der Erstellung von
+Alarmierungsplänen eingeplanten Einsatzmittel und Geräte werden in einer Einsatzmitteldatei erfasst. 4Die
+Kreisverwaltungsbehörden und ZRF stimmen sich mit dem Betreiber der ILS über das Verfahren und den
+Umfang der zu übernehmenden Daten ab. 5Änderungen und Ergänzungen dieser Daten haben die
+jeweiligen Kreisverwaltungsbehörden und ZRF unverzüglich der ILS zur Aktualisierung zu übergeben. 6Der
+Zeitpunkt der Übernahme in das Einsatzleitsystem ist dem ZRF oder der jeweiligen
+Kreisverwaltungsbehörde mitzuteilen. 7Diese unterrichten die eingeplanten oder betroffenen Einheiten,
+Personen, Stellen bzw. deren Träger in geeigneter Weise.
+
+2.7.2 Änderungsdienst
+1Alle in den Alarmierungsplanungen enthaltenen Einheiten, Personen, Stellen bzw. deren Träger teilen
+
+Änderungen unverzüglich dem ZRF (für den Bereich Rettungsdienst) oder der zuständigen
+Kreisverwaltungsbehörde (für die Bereiche Brand- und Katastrophenschutz) mit. 2Die
+Kreisverwaltungsbehörden und ZRF sind dafür verantwortlich, dass die Alarmierungspläne ständig auf dem
+neuesten Stand gehalten werden und die ILS die jeweils aktuelle Fassung oder entsprechende
+Änderungsmitteilungen erhält. 3Kurzfristig und unvorhergesehen eingetretene Änderungen bei den in den
+Alarmierungsplanungen enthaltenen Einheiten, Personen und Stellen sollen von diesen oder ihren Trägern
+unverzüglich und unmittelbar der ILS mitgeteilt werden, wenn sonst eine Beeinträchtigung der
+Alarmierungssicherheit droht. 4Die von der kurzfristigen Änderung betroffene Kreisverwaltungsbehörde oder
+der ZRF ist über die unmittelbare Mitteilung an die ILS unverzüglich zu informieren. 5Über die Einzelheiten
+des Verfahrens sollen zwischen der ILS, den Kreisverwaltungsbehörden und dem ZRF Vereinbarungen
+getroffen und den in den Alarmierungsplanungen enthaltenen Einheiten, Personen und Stellen mit der Bitte
+um Beachtung bekannt gegeben werden.
+
+2.7.3 Verzeichnis der Alarmierungspläne
+
+Die Alarmierungspläne sind in der ILS als Dokumentation und als Rückgriffsmöglichkeit bei Störungen in
+Papierfassungen oder auf andere geeignete Weise, sortiert nach Kreisverwaltungsbehörden, Gemeinden,
+Ortsteilen, Straßen, Gebieten, Objekten usw., zu hinterlegen.
+
+3. Alarmierung
+3.1 Alarmauslösende Stellen
+1Alarmauslösende Stellen sind die örtlich zuständigen ILS; Art. 10 Abs. 1 Nr. 10 ILSG bleibt unberührt. 2Bei
+
+Störungen unterstützen sich die ILS gegenseitig bei der Annahme von Notrufen und Meldungen und bei den
+erforderlichen Alarmierungen nach einem vorab geregelten Vertretungs- und Unterstützungskonzept.
+
+3.2 Alarmierungsmittel
+1Die ILS nutzen zur Alarmierung die Funkeinrichtungen der Behörden und Organisationen mit
+
+Sicherheitsaufgaben (BOS). 2Sicherheitsbehörden, Katastrophenschutzbehörden, Feuerwehren und
+Technisches Hilfswerk werden grundsätzlich über die analogen Funkverkehrskreise der Feuerwehren
+alarmiert. 3Rettungsdienst, Sanitätsdienst und Betreuungsdienst werden grundsätzlich über die analogen
+Funkverkehrskreise des Rettungsdienstes alarmiert. 4Zukünftig werden die Sicherheitsbehörden,
+Katastrophenschutzbehörden, Feuerwehren, Rettungsdienst, Sanitätsdienst, Betreuungsdienst und ggf. das
+Technische Hilfswerk über das BOS-Digitalfunknetz alarmiert. 5Es werden zertifizierte Endgeräte (z.B.
+TETRA-Meldeempfänger, Funkgeräte) nach dem Call-Out-Standard alarmiert. 6Eine von dieser Regelung
+abweichende drahtgebundene Alarmierung ist mit Zustimmung der Kreisverwaltungsbehörde (für die
+Bereiche Brand- und Katastrophenschutz) oder des ZRF (für den Bereich Rettungsdienst) im Einvernehmen
+mit der ILS zulässig, sofern sie den Erfordernissen einer sicheren und unverzüglichen Alarmierung genügt.
+7Sonstige Sonderregelungen bedürfen der Zustimmung des Staatsministeriums des Innern, für Bau und
+Verkehr. 8Soweit im Einzelfall eine Alarmierung mit BOS-Funk nicht möglich ist, legt der ZRF oder die
+Kreisverwaltungsbehörde im Einvernehmen mit der ILS, der zu alarmierenden Einheit, Person, Behörde
+oder sonstigen Stelle das Alarmierungsverfahren fest. 9Für den Fall von Störungen des BOS-Funks sind
+Ersatzalarmierungsverfahren zu vereinbaren. 10Für örtliche Stromausfälle sind Ersatzlösungen vorzusehen.
+11Probealarme sind regelmäßig durchzuführen. 12Die Termine für den Probealarm für eine stille
+Alarmierung (Alarmgeber, Meldeempfänger, Rundsteuerempfänger usw.) im Analog- wie auch im
+Digitalfunk sollen so gewählt werden, dass sowohl die Alarmempfänger als auch der Arbeitsablauf in der
+ILS möglichst wenig beeinträchtigt werden. 13Sirenen sollen grundsätzlich am ersten Samstag im Monat
+zwischen 11 Uhr und 14 Uhr durch Probealarm auf ihre Funktionsfähigkeit hin überprüft werden. 14Das
+ordnungsgemäße Funktionieren der Alarmierungsmittel ist nach einem von den Kreisverwaltungsbehörden
+und ZRF festgelegten Verfahren von den ILS zu überprüfen.
+
+3.3 Einsatzmittel
+1Einsatzmittel sind insbesondere Fahrzeuge, Organisationseinheiten, Ortsfeuerwehren, Personen, Gruppen
+
+von Einsatzkräften und Geräte. 2Die ILS ist durch entsprechende Statusmeldungen über deren
+Verfügbarkeit ständig auf dem aktuellen Stand zu halten. 3Nach einer Alarmierung sind grundsätzlich die
+Meldungen „ausgerückt“ und „Einsatzstelle erreicht“ abzugeben. 4Das ersteintreffende Einsatzmittel gibt
+unverzüglich eine erste Lagemeldung ab. 5Bei der Beendigung von Einsätzen sind die Meldungen „von
+Einsatzstelle abgerückt“ und „eingerückt“ abzugeben. 6Ist ein Einsatzmittel nicht einsatzklar, muss dies
+ebenfalls umgehend der ILS gemeldet werden. 7Im Rettungsdienst werden zusätzlich die Statusmeldungen
+„auf dem Weg zum Zielkrankenhaus“ und „Zielkrankenhaus erreicht“ übermittelt.
+
+3.4 Alarmierung der Kreiseinsatzzentralen (KEZ)
+1Im Rahmen der Alarmierungsplanung ist zu regeln, in welchen Fällen eine KEZ (falls vorhanden) zu
+
+alarmieren ist. 2Die KEZ unterstützt in Abstimmung mit der ILS den jeweiligen Einsatzleiter, soweit dies
+erforderlich ist. 3Im Fall großräumiger Schadensereignisse kann die ILS der KEZ Einsätze, die nicht
+zeitkritisch sind, zur selbstständigen Bearbeitung übertragen. 4Dazu weist die ILS der KEZ die
+erforderlichen Einsatzmittel zu, die aus ihrer Sicht zur Schadensbewältigung erforderlich sind (Art. 5 Abs. 2
+Satz 2 ILSG). 5Auf Mitteilung eines zusätzlichen Bedarfs durch den jeweiligen Einsatzleiter weist die ILS
+andere oder weitere Einsatzmittel und Einsatzkräfte zu. 6Dabei ist darauf zu achten, dass für die
+Bewältigung zeitkritischer Einsätze ausreichend Reserven an Einsatzmitteln gebildet werden. 7Diese
+
+müssen nach ihrer Alarmierung durch die ILS unverzüglich einen Auftrag für zeitkritische Einsätze
+übernehmen können.
+
+3.5 Alarmierung der Kreisverwaltungsbehörden
+1Die Kreisverwaltungsbehörden sind zu alarmieren, wenn zu erwarten oder nicht auszuschließen ist, dass
+
+zur Bewältigung eines Schadensereignisses ihr Tätigwerden als Sicherheits- oder
+Katastrophenschutzbehörde erforderlich ist. 2Die Alarmierung erfolgt durch die ILS.
+
+3.6 Nachalarmierungen, Alarmierung in Sonderfällen
+3.6.1 Nachalarmierungen
+1Nachalarmierungen erfolgen, wenn es aufgrund eines geänderten Meldebildes oder einer Mitteilung des
+
+Einsatzleiters nötig wird, weitere Einsatzmittel und Geräte zu alarmieren. 2Nachalarmierungen dürfen
+ausschließlich durch die ILS erfolgen.
+
+3.6.2 Alarmierung in Sonderfällen
+1Bei Ereignissen, für die aufgrund ihrer Seltenheit oder Besonderheit keine Alarmierungsplanung vorliegt
+
+(z.B. großflächige Sturmschäden), alarmiert die ILS nach eigenem pflichtgemäßen Ermessen oder auf
+Weisung der Kreisverwaltungsbehörde oder eines (Örtlichen) Einsatzleiters die Einsatzmittel und
+Einsatzkräfte, die zur Schadensbewältigung voraussichtlich erforderlich sind. 2Nachalarmierungen erfolgen
+entsprechend
+– der Mitteilung der Einsatzleiter über zusätzlich erforderliche Ressourcen,
+– den Weisungen der Sicherheits-/Katastrophenschutzbehörde.
+
+4. Schlussbestimmungen
+4.1 Inkrafttreten, Außerkrafttreten
+1Diese Bekanntmachung tritt am 17. Juli 2017 in Kraft. 2Sie tritt mit Ablauf des 16. Juli 2027 außer Kraft.
+
+4.2 Übergangsregelung, Fortgeltung und Aufhebung von Vorschriften
+1Die Bekanntmachung des Bayerischen Staatsministeriums des Innern über die Alarmierung im
+
+Rettungsdienst, Brand- und Katastrophenschutz in Bayern (Alarmierungsbekanntmachung – ABek) vom
+12. Dezember 2005 (AllMBl. S. 540) tritt mit Ablauf des 16. Juli 2017 außer Kraft. 2Die bestehenden
+Alarmierungsplanungen sind bis 16. Juli 2017 zu überprüfen und den Vorgaben dieser Bekanntmachung
+anzupassen. 3Ab 17. Juli 2017 erfolgt die Alarmierung nach den an diese Bekanntmachung angepassten
+Alarmierungsplanungen. 4Bis dahin erfolgt die Alarmierung nach den bestehenden Alarmierungsplanungen.
+5Bis zur Inbetriebnahme der ILS im jeweiligen Leitstellenbereich richtet sich die Alarmierung im Brand- und
+Katastrophenschutz weiterhin nach der Bekanntmachung des Bayerischen Staatsministeriums des Innern
+vom 14. Juni 1993 (AllMBl. S. 856), die zuletzt durch Bekanntmachung vom 22. März 2004 (AllMBl. S. 104)
+geändert worden ist.
+
+Günter Schuster
+Ministerialdirektor
+
+Anlage
+Landesweit einheitlich festgelegte Einsatzstichwörter, Stand 15.03.2017
+
