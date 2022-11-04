@@ -1,0 +1,283 @@
+---
+title: An R Markdown document converted from "5_Basic_Text_Analysis.ipynb"
+output: html_document
+---
+
+# Basics of Text Analysis
+
+Jan R. Riebling
+
+## Agenda
+
+* Frequencies
+* Readability
+* Similarity
+* Weighting
+
+```{r}
+#install.packages("koRpus", "tidytext")
+library(tidyverse)
+library(tidytext)
+library(tm)
+library(koRpus)
+library(stringr)
+library(ggplot2)
+```
+
+# Frequencies
+
+## Things to count
+
+* Frequency of types
+* Tokens
+* Length of tokens
+* Syllables
+* Sentences
+* Length of sentences
+
+```{r}
+corpus <- Corpus(DirSource("data/gutenberg/", 
+                           pattern=".+\\.txt$"))
+```
+
+```{r}
+names(corpus)
+```
+
+## The "tidy" approach
+
+The facilities of the `tm` package are sufficient for basic counting of word frequencies. However, if we need more custom or finely grained analysis, we reach an impase very fast. Also, a `Corpus` object does not work with most other basic functions.
+
+In general one should use *one*, flexible data structure as a starting point for all transformations and analysis. All transformations can thus start from the same premises and it is not necessary to learn the intricacies of every single analytical
+tool. 
+
+## Text as `tibble`
+
+A collection of text can be represented as a `tibble`. However, because of the length of strings the resulting data structure can not be visualized, since most displays would take to long to render the content. This often requires one to "fly blind" and use indirect methods to inspect the data.  
+
+```{r}
+df <- tidy(corpus)
+```
+
+```{r}
+dim(df)
+dimnames(df)
+```
+
+```{r}
+print(df)
+```
+
+## Describing text
+
+Using RegEx and string functions, variety of descriptives can be calculated.
+
+```{r}
+re.token <- "[a-zA-Z0-9]+[-']?[a-zA-Z0-9]*"
+df <- mutate(df, 
+             AlphanumCount=str_count(text, "\\w"),
+             WordCount=str_count(text, re.token),
+             SentCount=str_count(text, "[.,;:]"),
+             AvgWordSents=WordCount / SentCount)
+```
+
+```{r}
+df %>%
+  select(id, SentCount, AvgWordSents) %>%
+  arrange(desc(AvgWordSents))
+```
+
+## Counting tokens
+
+```{r}
+freq.df <- df %>%
+  select(id, text) %>%
+  unnest_tokens(token, text) %>%
+  count(id, token, sort=TRUE) %>%
+  ungroup()
+```
+
+```{r}
+freq.df
+```
+
+```{r}
+##  Document-Term-Matrix
+freq.df %>%
+  spread(token, n, fill=0) %>%
+  select(-1)
+```
+
+## Inside the frame and outside the box
+
+The main advantage to practicing a data wrangling approach (i.e. building the analysis around a central piece of data structure) is a increase in flexibility.
+
+* Flexibility: being able to analyize the data unconstrained by packages and following ones own semantic.
+* Literacy: being able to express onesself fluently in R.
+
+## Zipf's law
+
+states that the frequency of a type $n$ is proportional to the inverse of the rank of that type $r$. Including a parameter $\alpha$, this relationship forms a power-law:
+
+$$
+n \propto \frac{1}{r^\alpha}
+$$
+
+or in its more canonical form
+
+$$
+p(r) = Cr^{-\alpha}.
+$$
+
+```{r}
+books.df <- freq.df %>%
+  group_by(id) %>%
+  mutate(total=sum(n),
+         TermFreq=n/total,
+         title=str_sub(id, end=-5)) %>%
+  arrange(desc(n)) %>%
+  mutate(rank=row_number()) %>%
+  ungroup()
+```
+
+```{r}
+books.df[1:20,]
+```
+
+```{r}
+books.df %>%
+  ggplot(aes(rank, TermFreq, color=title)) +
+    geom_line(alpha=0.8) +
+    scale_x_log10() +
+    scale_y_log10()
+```
+
+# Readability
+
+## Objective complexity
+
+Readbility scores and indezes try to assess the difficulty in understanding the text by looking at its structural properties. Two different approaches:
+
+* Complexity as a function of the texts properties (e.g. TTR, MTLD).
+* Readability as a function of text and language (e.g. SMOG, Flesch-Kincaid). Often mapped to grade levels, by comparison with texts from these specific grades.
+
+## `readability` in `koRpus`
+
+Provides a wide variety of functions to measure the readbility of texts. To see the implemented measurements call `?readbility`. However, these functions depend on a working TreeTagger installation and require a file path to the text documents as input.
+
+## TTR
+
+The original measure of text complexity: the Type-Token-Ratio. It is calculated as the number of types $n(w)$ divided by the number of all tokens in the document $n(t)$:
+
+$$
+\text{TTR}_D = \frac{n(w)}{n(t)}
+$$
+
+and consequentally takes on values between $0$ and $1$. Whereby higher values are often considered a sign of higher diversity.
+
+```{r}
+books.df %>%
+  group_by(id) %>%
+  mutate(n.types=n(),
+         TTR=n.types/total) %>%
+  select(id, TTR) %>%
+  summarise(TTR=unique(TTR)) %>%
+  arrange(desc(TTR))
+```
+
+## Simple Measure of Gobbledygook (Smog)
+
+Developed by Harry McLaughlin (1969). SMOG is widely used in the evaluation of the general readbility of medical documents. The SMOG index expresses readbility as the minimum number of school years necessary to understand the text.  
+
+$$
+\text{SMOG}_D = 1.0430 \sqrt{\mathrm{polysyl}_D {30 \over s_D} } + 3.1291
+$$
+
+Whereby $s_D$ denotes the number of sentences in the text, while $\text{polysyl}_D$ stands for the number of words with more then three syllables.
+
+```{r}
+?koRpus::readability
+```
+
+# Similarity
+
+```{r}
+#install.packages("lsa")
+library(lsa)
+```
+
+## The vectorspace model
+
+Proposed by Gerard Salton (1979) as one possible model of information retrieval. Text is represented as a vector of word frequencies. This allows for the use of linear algebra to compare vectors with each other and with query vectors.
+
+> Vector space models have attractive qualities: processing vector spaces is a manageable implementational framework, they are mathematically welldefined and understood, and they are intuitively appealing, conforming to everyday metaphors such as “near in meaning”. In this way, vector spaces can be interpreted as a model of meaning, as semantic spaces. (Karlgren 2008:531)
+
+## Salton's Cosine
+
+It is not the length of the vector that counts, but its rotation in n-dimensional space. The cosine measure calculates the cosine of the angle between two vectors. It takes on a value of $0$ for orthogonal vectors (dissimilarity) and $[1,-1]$ for parallel vectors (similarity) 
+ 
+$$
+\cos_i(Q, d_i) = 
+\frac{Q \cdot d_i}{|{Q}|\,|{d_i}|} =
+\frac{\sum^{t}_{j=1}{a_{ij} q_j}}{ \sqrt{\sum^{t}_{j=1}{a_{ij}^2}} \sqrt{\sum^{t}_{j=1}{q_j^2}}}.
+$$
+
+```{r}
+dtm <- freq.df %>%
+  spread(token, n, fill=0) %>%
+  select(-1)
+
+mat <- as.matrix(dtm)
+```
+
+```{r}
+cosine(t(mat))
+```
+
+```{r}
+cosine(mat[1,], mat[2,])
+```
+
+# Weighting
+
+## TFiDF
+
+Combines the frequency of a specific type in a document with its inverse document frequency. The latter decreases the weight of a token in a text, by the amount of appearence of the tokens type in other documents. TFiDF has become the most popular term-weighting scheme in text analysis. 
+
+$$
+\text{tf}\text{idf}(t, d_i, D) = f(t, d_i) \log \left( \frac{N}{n_t} \right).
+$$
+
+```{r}
+# starting from the original df
+tfidf <- freq.df %>%  
+  bind_tf_idf(token, id, n)
+```
+
+```{r}
+tfidf
+```
+
+```{r}
+## Let's take a look
+
+tfidf %>%
+  select(id, token, tf_idf) %>%
+  arrange(desc(tf_idf))
+```
+
+```{r}
+dtm.mat <- tfidf %>%
+  spread(token, n, fill=0) %>%
+  select(-1) %>%
+  as.matrix()
+
+cosmat <- cosine(dtm.mat)
+```
+
+# References
+
+* Salton, Gerard. 1979. “Mathematics and Information Retrieval.” Journal of Documentation 35 (1): 1–29.
+* Dubin, David. 2004. “The Most Influential Paper Gerard Salton Never Wrote.” Library Trends 52 (4): 748–64.
+* Robertson, Stephen. 2004. “Understanding Inverse Document Frequency: On Theoretical Arguments for IDF.” Journal of Documentation 60 (5): 503–520.
+

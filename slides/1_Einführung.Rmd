@@ -1,0 +1,323 @@
+---
+title: "An R Markdown document converted from 1_Einführung.ipynb"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+**Text Mining in R**
+
+# Einführung in R
+
+Jan R. Riebling
+
+## Vorstellung des Workshops
+
+##  Abstraktes Wissen statt spezifischer Fähigkeiten
+
+Ziel dieses Workshops ist es grundlegendes Wissen über die automatisierte *Erhebung*, die *Aufbereitung* und die *Analyse* von Textdaten zu vermitteln.
+
+Konkrete Techniken und Lösungen:
+
+* Web-basierte Application Programming Interfaces (webAPI).
+* Universal Ressource Locator (URL).
+* Hypertext Markup Language (HTML).
+* Parsen und Tokenisierung.
+* Reguläre Ausdrücke.
+
+## Selbststudium
+
+Neben den im Seminarplan erwähnten Ressourcen gibt es eine Reihe von weiteren Möglichkeiten auf dem grundlegnden Wissen des Seminars aufzubauen.
+
+* Dokumentationen und Hilfsfunktionen.
+* Suchmaschinen (z.B.: Google, DuckDuckGo, etc.).
+* [Mailinglisten](https://www.r-project.org/mail.html) und Frage-Antwort-Foren (z.B.: [StackExchange](https://stackexchange.com/)).
+
+You will be enabled to look for specific solutions by knowing what to google and how to understand it. This is just a rough sketch. See “Guide.pdf” for further ressources.
+
+# R Grundlagen
+
+## Werkzeugkasten
+
+* [**R**](https://cran.r-project.org/): Open-Source Programmiersprache (aufbauend auf S, Scheme und Lisp) für statistische Auswertung und Daten Analyse.
+* [**Jupyter Notebook**](https://jupyter-notebook.readthedocs.io/en/stable/): Sprachagnostische Notebook-Umgebung zur annotierten Datenanalyse.
+* [**RStudio**](https://www.rstudio.com/): Integrierte Entwicklungsumgebung für R.
+
+## Eine zeitlose Tradition
+
+Traditionell das erste Programm, welches man in einer neuen Programmiersprache schreibt, ist das ["Hello World!" Programm](https://helloworldcollection.github.io/). Ziel dieses Programms ist es "Hello World!" auszugeben und damit ein Gefühl für die grundlegende Logik der Programmiersprache zu gewinnen und sie mit anderen Sprachen zu vergleichen.
+
+```{r}
+## Say "Hello World!"
+print('Hello World!')
+```
+
+R ist eine:
+
+* (stark) funktionale,
+* dynamische Typen nutzende,
+* interpretierte
+
+Programmiersprache.
+
+## Programiersprache
+
+Programiersprachen gelten als Turing-vollständig, d.h. alle Algorithmen können in allen Sprachen formuliert werden. Allerdings ist die tatsächliche Implementation oft sehr unterschiedlich.
+
+R kann prinzipiell die gleichen Konzepte ausdrücken, die auch in anderen Sprachen formuliert werden können.
+Praktisch hängt die Schwierigkeit der Implementation stark von der konkreten Problemstellung ab.
+
+## Grundsätzlich immer möglich
+
+* Eingabe (Input).
+* Operationen an Daten (z.B.: Arithmetik, boolsches Algebra).
+* Iterationen (z.B.: for-Schleife).
+* Konditionen (z.B.: if-else).
+* Ausgabe( Output).
+
+## Limitationen
+
+> Large data objects will usually be read as values from external files rather than entered during an R session at the keyboard. R input facilities are simple and their requirements are fairly strict and even rather inflexible. There is a clear presumption by the designers of R that you will be able to modify your input files using other tools, such as file editors or Perl to fit in with the requirements of R. ~[An Introduction to R](https://cran.r-project.org/doc/manuals/r-release/R-intro.html)
+
+## Tidyverse
+
+Sammlung von R Paketen, die neue Grammatik und Funktionalitäten bereitstellen.
+Ziel ist es eine konsistentere (tidier) Typenhierarchie bereitzustellen und einige der grundsätzlichen Limitationen von R zu überwinden.
+Dies kann jedoch auf Kosten der Effizienz gehen.
+
+Für diesen Workshop relevante Pakete:
+
+* `dplyr`
+* `tibble`
+* `stringi` and `stringr`
+
+## Jupyter Notebook
+
+Server-client Architektur, welche den Browser zur Darstellung und als GUI nutzt. Eignet sich insbesondere für exploratives oder interaktives Arbeiten mit Daten bei gleichzeitiger Dokumentation des Vorgehens.
+
+## RStudio
+
+**I**ntegrated **D**evelopment **E**nvironment für R.
+Bietet viele Funktionen und eignet sich insbesondere für das Schreiben von ausführlicherem und systematischerem Code. 
+
+# R Syntax
+
+## Numerische Typen
+
+```{r}
+2
+```
+
+```{r}
+2/3
+```
+
+```{r}
+complex(real=2, imaginary=3)
+```
+
+## Vektoren
+
+Ein *vector* ist ein elementarer Datentyp in R. Er ist definiert als eine Sequenz von Elementen des gleichen Typs. Um einen neuen Vektor zu erzeugen muss die Funktion `c()` mit den einzelnen Elementen des Argumenten (durch Kommata getrennt) gerufen werden.
+
+```{r}
+c(2, 3, 4, 600)
+```
+
+Vektoren folgen den Standardregeln der *linearen Algebra*.
+Dies erlaubt es schnell und unkompliziert eigene Modelle zu konstruieren.
+Hierin liegt die ursprüngliche Motivation zur Schaffung der R Sprache begründet.
+
+```{r}
+c(2, 3, 4, 600) + c(4, 6, 4, 4)
+```
+
+$$
+\text{cor}(X, Y) 
+= \frac{\text{SRE}}{\text{SSE}} 
+= \frac{\sum_{i=1}^{n} ( x_i - \bar{x} )( y_i - \bar{y} )}{ \sqrt{\sum_{i=1}^{n} ( x_i - \bar{x} )^2} \sqrt{\sum_{i=1}^{n} ( y_i - \bar{y} )^2}}
+$$
+
+```{r}
+a <- c(2, 3, 4, 600) 
+b <- c(4, 6, 4, 4)
+
+sum((a - mean(a)) * (b - mean(b))) / (sqrt((sum((a - mean(a))**2))) * sqrt((sum((b - mean(b))**2))))
+```
+
+```{r}
+cor(a, b)
+```
+
+## Zuweisung
+
+Objekten muss ein Name zugewiesen werden, damit sie für spätere Operationen zur Verfügung stehen. Ein Name wird mittels der `<-` or `->` Operatoren zugewiesen. Die Zuweisung erfolgt in der Richtung die durch die Spitze der Winkelklammer angezeigt wird. Beispielsweise:
+
+```
+name <- objekt
+```
+
+```{r}
+# Gemäß Konvention:
+x <- c(2, 3)
+
+# Funktioniert auch, ist aber schwerer zu lesen.
+4 -> y
+```
+
+```{r}
+ x * y
+```
+
+## Operatoren
+
+Die Standard Operatoren können in der [R Language Reference](https://cran.r-project.org/doc/manuals/r-release/R-lang.html#Operators) nachgeschlagen werden.
+
+```{r}
+1+2
+```
+
+## Funktionen
+
+## Mit Stil!
+
+Code wird öfter gelesen als geschrieben.
+Ein sinnvoller Styleguide sorgt für lesbaren und verstehbaren Code.
+Vorschlag: [Google's R Style Guide](https://google.github.io/styleguide/Rguide.xml).
+
+Ergänzungen:
+
+* “A foolish consistency is the hobgoblin of little minds” ~ Ralph Waldo Emmerson.
+* Sprechende Variablennamen verwenden.
+* Ausgiebiges Nutzen von Kommentaren im Code.
+
+## Indexierung
+
+Objekte in R die aus einer Sammlung von Einzelobjekten bestehen (*Sequenzen*), verfügen über einen Index. Dieser kann über verschiedene Werte angesprochen werden:
+
+* Ganze Zahlen,
+* boolsche Vektoren und
+* in manchen Fällen durch Zeichenketten (`character`).
+
+```{r}
+# <- ein Kommentarzeichen
+y <- c(1.2, 3., 4.5, 6.7, 7.890)
+```
+
+## Indexierung mit Ganzen Zahlen
+
+1. Auswahl eines Zahlenbereichs von `i` bis einschließlich `j`: `[i:j]`.
+2. Voranstellen eines Minuszeichens kehrt die Auswahl um: `[-(i:j)]`.
+3. Auswahl durch einen numerischen Vektor gibt die jeweilige Position zurück: `[c(i, j, k, ...)]`
+
+```{r}
+y[]
+```
+
+## Boolsche Vektoren
+
+Boolsche Werte in R sind: `TRUE` und `FALSE`.
+
+```{r}
+## Größer als 4. 
+y > 4
+```
+
+```{r}
+y[y > 4]
+```
+
+## Iteration
+
+* While-Schleife: `while (condition) {do...}`
+* For-Schleife: `for (var in x) {do...}`
+
+```{r}
+## Fibonacci sequence
+a <- 0 
+b <- 1
+while (a <= 30) {
+  print(a);  
+  c <- a+b; 
+  a <- b; 
+  b <- c
+}
+```
+
+```{r}
+for (element in y) {
+  print(element*2)
+}
+```
+
+## Bedingungen
+
+Können entweder auf einzelne Elemente oder Vektoren angewendet werden oder als Ausdrücke verwendet werden um die Abfolge von Befehlen zu steuern..
+
+```{r}
+y < 4
+```
+
+```{r}
+## This is control flow
+for (element in y) {
+  if (element < 4) {
+    print('Tada')
+  }
+  else print(element)
+}
+```
+
+# R Datentabellen
+
+## data.frame
+
+Ein `data.frame` ist eine abstrakte Datenstruktur zur Analyse, Transformation und Managament von Datenreihen.Besteht aus Zeilen (Beobachtungen) und Spalten (Variablen). Konzeptuell handelt es sich hierbei um benannte Listen von Vektoren.
+
+```{r}
+df <- data.frame(x=1:4, y=seq(5, 20, by=5), z=c('a', 'b', 'c', 'foo'))
+df
+```
+
+```{r}
+df$x
+```
+
+```{r}
+## df[row_index, column_index]
+
+df[,]
+```
+
+## Alternative Syntax
+
+Das Paket `dplyr` stellt eine weitere Syntax zur Verfügung welche mit dem Pipe-Symbol `%>%` operiert. 
+
+```{r}
+library(dplyr)
+```
+
+# Zen of Python
+
+```
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+```
+

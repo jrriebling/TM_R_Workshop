@@ -1,0 +1,292 @@
+---
+title: An R Markdown document converted from "6_Topic_Models_Machine_Learning.ipynb"
+output: html_document
+---
+
+**Data Mining and Machine Learning**
+
+# Machine Learning I
+
+Jan Riebling, **Universität Wuppertal**
+
+```{r}
+#install.packages(c('topicmodels', 'reshape2', 'caTools', 'ROCR'))
+    
+# Loading packages
+library(caTools)
+library(ROCR) 
+library(topicmodels)
+library(tidyverse)
+library(tidytext)
+```
+
+# Grundlagen des Machine Learnings
+
+## Machine Learning
+
+Maschinelles Lernen bezeichnet eine Vielzahl von Verfahren, die auf Mustererkennung und die Klassifikation von Daten abzielen.
+
+## Arten des Lernens
+
+* **Unsupervised learning**: Klassifikationen von Daten ohne vorherige Informationen welche Klassen korrekt sein könnten (ohne Überwachung des Modells). 
+* **Supervised learning**: Klassifiaktion von Daten durch Training eines Modells mit bereits bekannten Daten.
+
+## Workflow
+
+1. Datensatz zusammenstellen:
+    * UL und SL: Datensatz der Eigenschaften (*features*).
+    * Nur SL: Vektor der Zielvariable (*target*).
+        * Trennung in Trainings- und Testdaten.
+2. Modell trainieren klassifizieren.
+3. Modell überprüfen:
+    * Modell auf die zurückgehaltenen Testdaten anwenden und Fehler identifizieren.
+4. (Klassifizierer implementieren).
+
+# Unsupervised Learning
+
+## Vorgehen und Ziel
+
+Klassifikation oder dimensionelle Reduktion von Daten mit dem Ziel der Mustererkennung.
+
+## Topic Models
+
+Im Bereich der quantitativen Textanalyse eingesetzte Verfahren zur unüberwachten Extraktion von Themen aus Texten. Der Begriff bezieht sich auch oft auf die *Latent Dirichlet Allocation (LDA)* als einem der bekanntesten Verfahren in diesem Bereich. In R wird dieses und direkt damit verwandte Verfahren durch das Paket `topicmodels` bereitgestellt. Siehe auch diese [Vignette](https://cran.r-project.org/web/packages/topicmodels/vignettes/topicmodels.pdf) und insbesondere [„Text Mining with R: A Tidy Approach“](https://www.tidytextmining.com/topicmodeling.html#latent-dirichlet-allocation).
+
+```{r}
+library(topicmodels)
+```
+
+```{r}
+ttl_df <- read_delim('../data/GesetzeBayernTTL.tsv', col_names=c('DocID', 'Token', 'Tag', 'Lemma'))
+```
+
+```{r}
+## Verteilung der Tags
+
+ttl_df %>%
+  count(Tag, sort=TRUE)
+```
+
+## Document Term Matrix
+
+```{r}
+gesetzebay_dtm <- ttl_df %>%
+  filter(Tag %in% c('NN', 'NE', 'ADJA', 'ADV', 'ADJD' ), Lemma != '<unknown>') %>%
+  count(DocID, Lemma, sort=TRUE) %>%
+  cast_dtm(DocID, Lemma, n)
+
+gesetzebay_dtm
+```
+
+## Topic Model
+
+```{r}
+gbay_lda <- LDA(gesetzebay_dtm, k=4, control=list(seed = 1234))
+gbay_lda
+```
+
+## $\beta$ Werte
+
+Die $\beta$ Werte geben die Wahrscheinlichkeit für ein Wort, bei zufälliger Ziehung, aus einem bestimmten Thema zu entstammen.
+
+```{r}
+gbay_topics <- tidy(gbay_lda, matrix="beta")
+gbay_topics
+```
+
+## Top 10
+
+Worte pro Thema
+
+```{r}
+gbay_top_terms <- gbay_topics %>%
+  group_by(topic) %>%
+  slice_max(beta, n = 10) %>% 
+  ungroup() %>%
+  arrange(topic, -beta)
+
+gbay_top_terms
+```
+
+```{r}
+gbay_top_terms %>%
+  mutate(term = reorder_within(term, beta, topic)) %>%
+  ggplot(aes(beta, term, fill = factor(topic))) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~ topic, scales = "free") +
+  scale_y_reordered()
+```
+
+# Supervised Learning
+
+## Vorgehen und Ziel
+
+Die Zielvariablen (die Sorte im Iris-Beispiel) werden genutzt um ein Modell auf die Unterschiede in den Daten anzupassen (*trainieren*). Statistisch gesprochen nutzen wir die Zielvariablen als *abhängige Variablen* und die beobachteten Ausprägungen in den Daten als *unabhängige Variablen*. Ziel dieses Vorgehens ist es einen Klassifikator zu erzeugen, der neue Objekte aufgrund der bekannten Eigenschaften klassifizieren kann.
+
+* [Machine Learning with R](https://www.geeksforgeeks.org/machine-learning-with-r/).
+* [R for Statistical Learning](https://daviddalpiaz.github.io/r4sl/).
+
+## Logistische Regression
+
+Siehe [Beschreibung des Verfahrens](https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression) und [Dokumentation des scikit-Objekts](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html#sklearn.linear_model.LogisticRegression). Statt einer linearen Regressionsgerade wird eine logistische Funktion zur Schätzung des Zusammenhangs von unabhängigen und abhängiger Variablen verwendet. Im Bereich des maschinellen Lernens wird dieses Verfahren auch als Maximum Entropie Klassifikation bezeichnet.
+
+## Vergleich von Regressionsverfahren
+
+![Logistische vs. Lineare Regression.](../figures/LogisticRegression.svg)
+
+## Beispiel: Sentiment Analysis
+
+Ein Klassifikator der aus den Worten eines Textes auf die Konnotation (meist: positiv oder negativ) eines Textes schließen soll. Hier auf der Basis von Movie Reviews der IMDB. Kompletter Datensatz ist [hier](https://www.rdocumentation.org/packages/textdata/versions/0.4.4) erhältlich.
+
+## Text zu Daten
+
+Drei Schritte:
+
+1. Tokenisierung.
+2. Aufbereitung (Bsp. Entfernung von Stopwörtern).
+3. Numerische Repräsentation.
+
+Da die Transformation zu zeitaufwendig war und den Speicherbedarf dieses Rechners übersteigt, wird auf ein einfacheres Beispiel zurückgegriffen.
+
+```R
+text_df <- read_delim('../data/IMDBReviews.tsv')
+
+data_df <- text_df %>%
+  unnest_tokens(Token, RawText) %>%
+  count(DocID, Token) %>%
+  pivot_wider(DocID, names_from=Token, values_from=n, values_fill=0)
+
+data_df <- merge(data_df, text_df %>% distinct(DocID, Sentiment), by='DocID')
+```
+
+```{r}
+data_df <- read_csv('../data/IMDBReviewsData.csv')
+
+## DocID entfernen
+data_df <- data_df[,-1]
+## Sentiment als factor
+data_df$Sentiment <- as.factor(data_df$Sentiment)
+```
+
+```{r}
+names_df <- read_csv('../data/Names.csv')
+## Sex als kategoriale Variable
+names_df$Sex <- as.factor(names_df$Sex)
+```
+
+```{r}
+data_df <- names_df %>%
+  mutate(LastOne=str_to_lower(str_sub(FirstName, start=-1))) %>%
+  count(FirstName, Sex, LastOne) %>%
+  pivot_wider(names_from=LastOne, values_from=n, values_fill=0)
+
+data_df
+```
+
+## Aufsplitten in Test- und Trainingsdaten
+
+Eine zentrale Technik des maschinellen Lernens ist der Test der Modellgüte anhand zurückgehaltener Daten (*holdout data*). Da in den zurückgehaltenen Testdaten ebenfalls die wahre Ausprägung der Zielvariablen bekannt ist, kann so die Vorhersagekraft des Klassifikators abgeschätzt werden. Dazu ist es notwendig Zufallsstichproben aus dem ursprünglichen Datensatz zu generieren.
+
+```{r}
+set.seed(1234)
+num_obs <- nrow(data_df)
+index <- sample(num_obs, size=trunc(0.60 * num_obs))
+
+train_df <- data_df[index,-1]
+test_df <- data_df[-index,-1]
+```
+
+## Modell trainieren
+
+```{r}
+logistic_model <- glm(Sex ~ ., 
+                      data = train_df, 
+                      family = "binomial")
+#logistic_model
+```
+
+## Vorhersage auf Basis des Test-Datensatzes
+
+Eine zentrale Besonderheit des maschinellen Lernens ist der Test der Vorhersage mit Daten, die **nicht** zum Training des Modells herangezogen wurden. Auf der Basis dieser Vorhersage können dann Metriken zur Einschätzung der Modellgüte berechnet werden.
+
+```{r}
+prediction <- predict(logistic_model, 
+                      test_df, 
+                      type = "response") 
+
+# Wahrscheinlichkeiten dichotomisieren
+prediction <- as.factor(ifelse(prediction > 0.5, 'male', 'female'))
+```
+
+## Korrespondenz mit zugrundeliegenden Fakten
+
+Konfusions-Matrix:
+
+| $\,$                   | Tatsächlich positiv                    | Tatsächlich negativ                    |
+|------------------------|----------------------------------------|----------------------------------------|
+| **Vorhersage positiv** | Wahres positiv, Power                  | Falsch positiv, Typ I, $\alpha$-Fehler |
+| **Vorhersage negativ** | Falsch negativ, Typ II, $\beta$-Fehler | Wahres negativ                         |
+
+```{r}
+table(prediction, test_df$Sex, dnn=c('prediction', 'truth'))
+```
+
+## Formale Accuracy
+
+Formale Beschreibung der Treffgenauigkeit:
+
+$$
+\text{Accuracy} = \frac{\text{TP} + \text{TN}}{\text{TP} + \text{TN} + \text{FP} + \text{FN}} = \frac{\sum \text{korrekte Klassifikationen}}{\sum \text{Stichprobengröße}}
+$$
+
+Hinzu kommt die *balanced accuracy* welche durch die Relativierung der wahr positiven und wahr negativen Vorhersagen mit der respektiven Stichprobengröße gebildet wird. Dies ist insbesondere im Fall binärer Klassifikatoren von Bedeutung. 
+
+```{r}
+missing_classerr <- mean(prediction != test_df$Sex)
+print(paste('Accuracy: ', 1 - missing_classerr))
+```
+
+## Präzision
+
+Präzision (Precision) ist das Verhältnis der korrekten positiven Vorhersagen zu allen positiven Vorhersagen (inklusive Typ I Fehler).
+
+$$
+\text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}} = \frac{\sum \text{true positive}}{\sum \text{predicted positive}}
+$$
+
+
+## Recall
+
+Recall oder Sensitivität ist eine Maßzahl für die relative Anzahl der korrekten positiven Schätzungen gegeben alle Schätzungen (einschließlich Falsch negativ und Typ II Fehler).
+
+$$
+\text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}} = \frac{\sum \text{wahr positiv}}{\sum \text{tatsächlich positiv}}
+$$
+
+## F1-score
+
+Der gewichtete Mittelwert von Präzision und Sensitivität.
+
+# Anmerkungen zum maschinellen Lernen
+
+
+## Probleme
+
+* Data driven: Nähe zum p-hacking und effect mining.
+* Undurchsichtigkeit: Bestimmte Verfahren machen es schwer bis unmöglich zu verstehen warum ein Modell konvergiert.
+* GIGO: Datenqualität muss im jeweiligen Einzelfall bewertet werden..
+* Täuschend einfach.
+
+## A chance  for social science?
+
+> To summarize, the claim that prediction is a necessary (but not sufficient) feature of causal explanation is consistent with a view of causality that is almost universally accepted by sociologists—even sociologists who have explicitly denied the necessity of prediction. The resolution of the apparent conflict is that prediction must be defined suitably—that is, in the broad sense of out-of-sample testing, allowing both for probabilistic predictions and for predictions about stylized facts or patterns of outcomes. [...] Although the details would differ depending on the type of explanation in question, in all cases the procedure would be roughly: (1) construct a “model” based on analysis of cases (A, B, C, ...); (2) deploy the model to make a prediction
+about case X, which is in the same class as (A, B, C, ...) but was not used to inform the model itself; (3) check the prediction. (Watts 2014, 340)
+
+## Only curve-fitting?
+
+> As much as I look into what’s being done with deep learning, I see they’re all stuck there on the level of associations. Curve fitting. That sounds like sacrilege, to say that all the impressive achievements of deep learning amount to just fitting a curve to data. From the point of view of the mathematical hierarchy, no matter how skillfully you manipulate the data and what you read into the data when you manipulate it, it’s still a curve-fitting exercise, albeit complex and nontrivial. (Judea Pearl, [“To Build Truly Intelligent Machines, Teach Them Cause and Effect”](https://www.quantamagazine.org/to-build-truly-intelligent-machines-teach-them-cause-and-effect-20180515/))
+
+# References
+
+* Watts, Duncan J. 2014. “Common Sense and Sociological Explanations.” American Journal of Sociology 120 (2): 313–351.
+

@@ -1,0 +1,410 @@
+---
+title: An R Markdown document converted from "2_Strings_und_RegEx.ipynb"
+output: html_document
+---
+
+**Text Mining in R**
+
+# Text, Strings und Reguläre Ausdrücke
+
+Jan R. Riebling
+
+## Agenda
+
+* What is text?
+* Text in R
+* Text I/O
+* String operations
+
+## Zusätzliche Pakete
+
+R-base verfügt aus historischen Gründen nur über sehr eingeschränkte Möglichkeiten Zeichenketten (*strings*) zu verarbeiten. Daher sind für Text Mining zusätzliche Pakete empfohlen:
+
+* `tidyverse`: Meta-Paket für Data Science enthält unter anderem `dplyr`, `stringr` und andere. Die Dokumentation befindet sich [hier]().
+* `stringr`: Implementiert Stringfunktionalitäten auf Basis von C Bibliotheken.
+* `stringi`: Ausführlichere Version von `stringr`.
+* `tidytext`: Zusätzliche Unterstützung für textbasierte Datenstrukturen im Rahmen der `tidyverse` Philosophie. Ausführliche Dokumentation im Buch [„Text Mining with R“]().
+* `tm`: Stellt Datenstrukturen zum Ugang mit Textkorpora bereit. Siehe hierzu die entsprechende [Dokumentation](https://cran.r-project.org/web/packages/tm/vignettes/tm.pdf).
+
+```{r}
+install.packages(c('tidytext', 'tm'))
+```
+
+```{r}
+library(tidyverse)
+library(stringr)
+library(tm)
+```
+
+## Tibbles vs. data.frames
+
+For most purposes, a `tibble`-object works almost the same as a `data.frame`. In fact, the `tibble` is much more strict and exhibits the following behaviors:
+
+* Never converts or transforms data types, variable names or assigns row names automatically.
+* No autocompletion of variable names.
+* Subsetting with the index notation `[` always returns a `tibble`-object.
+
+# Maschinenlesbarer Text
+
+## A formal definition of language
+
+A language $\mathcal{L}$ can be defined as consisting of an alphabet $\Sigma{}$ and a grammar containing the rules for the construction of valid expressions. The alphabet of a language consists of a set of "words" $w$, the smallest elements of a language. Under the model of a generative grammar the construction of a valid sentence can be described as a set of substitution rules, starting from the level of the "sentence" and stopping when the word level is reached. If each substitution is correct the resulting sentence is correct. Only formal languages can be described entirely in terms of a grammar.
+
+## Grammar 
+
+> Eine Grammatik $G$ ist ein Tupel $G = (V, T, R, S)$. Dabei ist
+> * $V$ eine endliche Menge von Variablen;
+> * $T$ eine endliche Menge von Terminalen; es gilt $V \cap T = \emptyset$;
+> * $R$ eine endliche Menge von Regeln. Eine Regel ist ein Element $(P, Q)$ aus
+> $(V \cup T )∗ V (V \cup T )∗ \times (V \cup T )∗$ . Das heißt, P ist ein Wort über $(V \cup T)$,
+> das mindestens eine Variable aus $V$ enthält, während $Q$ ein beliebiges Wort über $(V \cup T)$ ist. P heißt auch Prämisse und Q Konklusion > der Regel. Für eine Regel (P, Q) ∈ R schreibt man üblicherweise u auch P →G Q
+> oder nur P → Q.
+> * S das Startsymbol, S ∈ V .
+
+(Erk & Priese 2008, 54)
+
+## Text als "String"
+
+Standardmäßig wird Text in Computern als eine Zeichenkette definiert. Die Grammatik die einen validen String erzeugt wird als eine reguläre Grammatik: Vom einem Starpunkt werden Elemente in eine vordefinierte Richtung hinzugefügt bis ein Endsymbol erreicht wird.
+
+In Basis-R werden Strings mittels der Klasse `character` repräsentiert.
+
+```{r}
+class("This is a string!")
+```
+
+# Eigenschaften von Strings
+
+## Definition
+
+Strings werden entweder mit `"` oder `'` geöffnet und müssen mit dem selben Zeichen geschlossen werden.
+
+```{r}
+string1 <- "This is a string."
+string2 <- 'This is another one, using single quotes'
+string1
+```
+
+## Sonderzeichen
+
+```{r}
+"This will work"
+```
+
+```{r}
+'But this won't'
+```
+
+## Escaping
+
+Um Sonderzeichen in Strings zu repräsentieren oder die Funktion als Sonderzeichen zu unterdrücken müssen diese „escaped“ werden. Dies geschieht durch Voranstellen von `\`, hat jedoch zur Folge das eine Repräsentation von `\` im String selbst so auszusehen hat: `\\`. 
+
+Sonderzeichen:
+
+* `\n`: die (UNIX) newline; Ein Zielenumbruch.
+* `\r`: Carriage Return; Springt an den Anfang der Zeile.. 
+* `\t`: Tabulator Whitespace.
+* `\b`: ein einfacher Whitespace.
+* `\u....`: definiert einen unicode codepoint (UTF-8) mittels hexadezimaler Zahlen.
+
+```{r}
+print("But this won\'t")
+```
+
+```{r}
+print("\u01f6")
+```
+
+# Text I/O
+
+# Unicode
+
+Im ursprünglichen ASCII encoding wurden Strings mittels 8bit repräsentiert, daher konnten nur 256 Zeichen dargestellt werden. Um die Bandbreite natürlicher Sprachen abzubilden wurde der Unicode Standard eingeführt. Mittels eines spezifischen Encodings (z.B.: UTF-8) wird die Korrespondenz eines bestimmten codepoints (unicode character) mit einem in einer gegebenen Schriftart darstellbaren Zeichen verknüpft.
+
+Um das encoding eines Textstreams zu verändern kann die Funktion `file()` genutzt werden. Die Kodierung kann dann über das Argument `encoding="..."` angegeben werden.
+
+```{r}
+lines <- readLines(file('../data/ucexample_Weber_utf8.txt', 
+                        encoding='UTF-8'))
+```
+
+```{r}
+show(lines)
+```
+
+## Raw text input
+
+R's standard function to read text files is `readLines()`. As the name suggests, it actually produces a vector of lines (seperated by newlines) from the file input. To preserve the formatting and get the *plain text* content, the function `readr::read_file()` can be used. Other packages offer additional read/write functions for text.
+
+```{r}
+plain <- read_file('../data/ucexample_Weber_utf8.txt')
+```
+
+```{r}
+show(plain)
+```
+
+## CSV files
+
+One of the most common and robust data types is CSV (*comma seperated values*). Each line contains a row of data, seperated by a specific character (e.g. comma). Optionally, the first line contains a header giving the column names.
+
+```{r}
+econ_df <- as_tibble(read.csv(file="data//EconAbstRaw.csv", 
+                              header=TRUE, 
+                              sep=","))
+```
+
+```{r}
+dim(econ_df)
+```
+
+```{r}
+names(econ_df)
+```
+
+```{r}
+table(econ_df$Zeitschrift)
+```
+
+# String Operationen
+
+## `stringr`
+
+Dieses Paket stellt Standardfunktionen für die Manipulation von Strings bereit. Diese beginnen immer mit `str_`.
+
+* `str_length()`: gibt Länge des Strings zurück; respektiert `NA`.
+* `str_c()`: konkateniert Strings.
+* `str_sub()`: Subsetting für Strings (funktioniert wie ein Index).
+* `str_to_lower()`, `...upper()`, `...title()`: Gibt lower/upper/title case Repräsentation des Strings zurück.
+* `str_sort()`: returns a sorted representation of the string.
+* `str_extract()`: Extrahiert Substrings die dem angegeben Muster entsprechen.
+* `str_detect()`: Gibt einen boolschen Vektor entsprechend des angegebenen Musters aus.
+* `str_count()`: Zählt Häufigkeit des Vorkommens im String.
+
+Manche dieser Funktionen lassen sich mit `_all` auf alle Übereinstimmungen mit einem Muster innerhalb des Strings verallgmeinern. Ansonsten wird immer nur die erste Übereinstimmung verwendet.
+
+```{r}
+## <TAB> to expand
+?str_
+```
+
+```{r}
+str_c("Ham, bacon", "Spam", sep=" and ")
+```
+
+```{r}
+breakfast <- c("eggs", "bacon", "spam", "lobster")
+breakfast
+```
+
+```{r}
+str_c(breakfast, collapse=", ")
+```
+
+```{r}
+str_c(breakfast, "NA")
+```
+
+```{r}
+## NA is contagious!
+str_c(breakfast, NA)
+```
+
+## Vektorisierung
+
+Die meisten `stringr`-Funktionen werden bei Anwendung auf einen Vektor automatisch auf alle Einzelelemente angewendet. Die Rückgabe ist in diesem Fall ein Vektor.
+
+```{r}
+str_length('breakfast')
+```
+
+```{r}
+str_length(breakfast)
+```
+
+```{r}
+str_to_lower(breakfast)
+```
+
+## Locale
+
+`stringr` Funktionen erlauben die Angabe eines Sprachraums mittels des entsprechenden [ISO 639 Codes](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes).
+
+```{r}
+## Default english language ("en")
+str_to_upper(c("i", "ı"))
+```
+
+```{r}
+## Turkish upper case
+str_to_upper(c("i", "ı"), locale="tr")
+```
+
+# Reguläre Ausdrücke
+
+## Ein paar Worte der Warnung
+
+> Some people, when confronted with a problem, think “I know, I'll use regular expressions.” Now they have two problems.
+
+> *Jamie Zawinski* 	 
+
+## Was sind RegEx
+
+Spezifizieren eine Auswahl aus einem endlichen Zeichenvorrat (Alphabet) $\Sigma$. Im Prinzip handelt es sich um eine sehr elgante Art Teile von Zeichenketten mit Platzhaltern auszuwählen.
+
+Sie stehen in fast allen Betriebssystemen und Programmiersprachen zur Verfügung (siehe [hier](https://www.regular-expressions.info/)).
+
+## Formale Definition
+
+Wenn $x$ und $y$ reguläre Ausdrücke sind, dann sind:
+
+2. Verkettung: $(xy)$
+1. Alternative: $(x|y)$
+3. Wiederholung (Kleene-Stern): $(x^*)$
+
+ebenfalls valide, reguläre Ausdrücke.
+
+## Implementation
+
+Zwei dominante Standards für Reguläre Ausdrücke:
+
+* [POSIX ERE](http://www.regular-expressions.info/posix.html)
+* [PCRE - Perl Compatible Regular Expressions](http://www.pcre.org/)
+
+## ... und dann gibt es noch R
+
+http://www.regular-expressions.info/rlanguage.html:
+
+>  The R Project for Statistical Computing provides seven regular expression functions in its base package. The R documentation claims that the default flavor implements POSIX extended regular expressions. That is not correct. In R 2.10.0 and later, the default regex engine is a modified version of Ville Laurikari's TRE engine. It mimics POSIX but deviates from the standard in many subtle and not-so-subtle ways. What this website says about POSIX ERE does not (necessarily) apply to R.
+
+## Funktionen
+
+R-base hat wie  die meisten Programmiersprachen grundlegende Möglichkeiten zum Umgang mit RegEx (e.g. `grep`). Zusätzlich verstehen die meisten `stringr` or `stringi` Funktionen ebenfalls reguläre Ausdrücke.
+
+## String matching
+
+In der einfachsten Variante können reguläre Ausdrücke einfach zur Spezifikation eines Teils einer Zeichenkette genutzt werden. 
+
+```{r}
+breakfast <- 'Egg and bacon\
+Egg, sausage, and bacon\
+Egg and Spam\
+Egg, bacon, and Spam\
+Egg, bacon, sausage, and Spam\
+Spam, bacon, sausage, and Spam\
+Spam, egg, Spam, Spam, bacon, and Spam\
+Spam, Spam, Spam, egg, and Spam\
+Spam, Spam, Spam, Spam, Spam, Spam, baked beans, Spam, Spam, Spam, and Spam\
+Lobster Thermidor aux crevettes with a Mornay sauce, garnished with truffle pâté, brandy, and a fried egg on top, and Spam.'
+```
+
+```{r}
+str_extract(breakfast, 'Spam')
+```
+
+```{r}
+str_extract_all(breakfast, 'Spam')
+```
+
+## Sonderzeichen
+
+* `.` : entspricht arbiträrem Zeichen außer der Newline.
+* `^` : entspricht dem Anfang eines Strings.
+* `$` : entspricht dem Ende eines Strings.
+* `\` : Escaping von Sonderzeichen.
+
+```{r}
+str_extract_all(breakfast, ".gg.")
+```
+
+## Alternative
+
+Der `|` verhält sich ähnlich wie ein logisches ODER.
+
+```{r}
+str_extract_all(breakfast, 'Egg|egg')
+```
+
+```{r}
+dennis <- "Listen, strange women lying in ponds distributing swords is no basis for a system of government. Supreme executive power derives from a mandate from the masses, not from some farcical aquatic ceremony."
+dennis
+```
+
+```{r}
+alice <- '\'When I\'M a Duchess,\' she said to herself, (not in a very hopeful tone though), \'I won\'t have any pepper in my kitchen AT ALL. Soup does very well without--Maybe it\'s always pepper that makes people hot-tempered\'.'
+alice
+```
+
+## Wiederholungen
+
+Spezifiziert Anzahl der Wiederholungen des vorangegangenen regulären Ausdrucks $x$. Folgende Wiederholungen sind möglich:
+
+Syntax | Bedeutung
+-|-
+`*` | 0 oder mehr Wiederholungen
+`+` | 1 oder mehr Wiederholungen
+`{m}` | Genau `m` Wiederholungen
+`{m,n}` | Von `m` bis einschließlich `n`
+`?` | 0 bis 1 Wiederholungen; Schaltet greedy ab.
+
+Die Wiederholungen sind standardmäßig *greedy*, d.h. es wird soviel vom String verbraucht, wie möglich. Dieses Verhalten kann abgeschaltet werden, indem ein `?` nach der Wiederholung gesetzt wird.
+
+```{r}
+## Greedy by default!
+gene <- "GCUGCCGCAGCG"
+
+str_extract(gene, "C.+C")
+```
+
+## Spezifizierung von Gruppen
+
+Syntax | Äquivalent | Bedeutung
+-|-|-
+`\d` | `[0-9]` | Ganze Zahlen
+`\D` | `[^0-9]` | Alles was keine Zahl ist
+`\s` | `[ \t\n\r\f\v]` | Alles was whitespace ist 
+`\S` | `[^ \t\n\r\f\v] ` | Alles was nicht whitespace ist
+`\w` | `[a-zA-Z0-9_]` | Alphanumerische Zeichen und Unterstrich
+`\W` | `[^a-zA-Z0-9_]` | Kein alphanumerische Zeichen oder Unterstrich
+
+## Texte in Token zerlegen
+
+```{r}
+tokens <- str_extract_all(alice, "\\w+[-\']?\\w+|\\S+?")
+tokens
+```
+
+## Eine valide Emailadresse finden
+
+![Regular Expression](https://imgs.xkcd.com/comics/regular_expressions.png)
+
+In der Wirklichkeit sehr viel Komplizierter: http://www.ex-parrot.com/~pdw/Mail-RFC822-Address.html.
+
+# Anwendungsbeispiel
+
+## Vokale zählen
+
+```{r}
+str_count(breakfast, "[aeiou]")
+```
+
+## Suchen und ersetzen
+
+```{r}
+bsp <- 'Ersetzen sie bei allen Zitaten die eckigen Klammern ([])\
+mit den korrekten, runden Klammern.\
+Spezifisch bei Blabla [2010] aber auch bei anderen [z.B.: Foobaz 2009, 17].'
+
+
+str_replace_all(bsp, '\\[(.+?)\\]', '\\(\\1\\)')
+```
+
+## HTML oder anderes Markup entfernen
+
+```{r}
+## Remove the tags
+htmltag <- "<p>text</p>"
+
+str_replace_all(htmltag, "<.*?>", "")
+```
+

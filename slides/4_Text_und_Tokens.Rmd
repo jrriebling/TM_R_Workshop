@@ -1,0 +1,263 @@
+---
+title: An R Markdown document converted from "4_Text_und_Tokens.ipynb"
+output: html_document
+---
+
+**Text Mining in R**
+
+
+# Text und Tokens
+
+Jan R. Riebling
+
+```{r}
+library(tidyverse)
+library(tidytext)
+library(rvest)
+library(tm)
+```
+
+# Korpora
+
+## Textdaten
+
+Textdaten werden normalerweise in der Form von Korpora verwaltet. Diese unterscheiden sich von herkömmlichen Datentabellen wie folgt:
+
+* Komplexe Mehrebenenstruktur (z.B.: Metadaten, Annotationen, etc.).
+* Großer Speicherbedarf aufgrund nicht-numerischer Datentypen.
+
+## Korpusmanagement
+
+Innerhalb von R gibt es vierschiedene Pakete welche Datenklassen für Textdaten und Korpora bereitstellen. Unter anderem:
+
+* `quanteda`: Ein [Paket](https://github.com/quanteda/quanteda) ausgerichtet auf sozialwissenschaftliche Analysen von Textkorpora.
+* `tm`: [Paket](https://mran.microsoft.com/snapshot/2018-03-30/web/packages/tm/vignettes/tm.pdf) mit starkem Fokus auf Text Mining und Korpusmanagement.
+* `koRpus`: Natural Language Processing [Paket](https://cran.r-project.org/web/packages/koRpus/vignettes/koRpus_vignette.html) mit eigenen Korpus- und Text-Datenklassen. 
+
+## Pragmatischer Ansatz
+
+Ein sinnvolles Korpusmanagement sollte immer an die Erfordernisse des jeweiligen Projekts angepasst sein. Aufgrund der unterschiedlichen Zugänge, Erfordernisse der Daten und Zielsetzungen, kann hier keine eindeutige Empfehlung gegeben werden.
+
+Stattdessen, grundlegende Prinzipien des Umgangs mit Textdaten und der auf R Vektoren aufbauende [tidytext](https://www.tidytextmining.com/)-Ansatz.
+
+## ~~Korpuserstellung~~
+
+## `Corpus`
+
+Basis-Klasse für Textsammlungen in `tm`. Baut auf dem `list` Datentyp auf. Um eine Textsammlung in den R Namespace zu laden muss eine Quelle angegeben werden. Z.B.:
+
+* `DirSource()`: Erzeugt Korpus auf Basis eines lokalen Verzeichnispfads.
+* `VectorSource()`: Quelle ist ein Vector in dem jedes Element ein Dokument darstellt.
+* `DataframeSource()`: Interpretiert data.frame oder ähnliche Strukturen (CSV) als Quelle.
+
+```{r}
+tm::getSources()
+```
+
+## Reader
+
+Dient zum Einlesen verschiedener Formate und kann über `readerControl` während der Korpuserstellung eingebunden werden. Allerdings kann es dabei zu diversen Problemen kommen.
+
+```{r}
+tm::getReaders()
+```
+
+```{r}
+docs <- Corpus(DirSource("../data/GesetzeBayernPDF/"),
+               readerControl=list(reader=readPDF(engine='xpdf'),
+                                  language="de"))
+```
+
+```{r}
+docs$content[[1]]$meta
+```
+
+```{r}
+pdfs[[2]]$content
+```
+
+## Writing
+
+The documents of a corpus can be written to multiple TXT-files using `writeCorpus()`. In the case of many short documents, it might be prefereable to write them to a single file using `writeLines()`.
+
+* `writeCorpus(x, path=".", filenames=NULL)`
+* `writeLines(text, con=stdout(), sep="\n", useBytes=FALSE)`
+
+## Plaintext
+
+Um sinnvoll mit Textdaten arbeiten zu können sollten diese stets in einem Plaintext-Format vorliegen. Für die Konvertierung zu (und von) Plaintext gibt es eine Vielzahl von Programmen, die auch über R-Wrapper zur Verfügung stehen. Allerdings arbeiten die meisten Kommandozeilenprogramme effizienter und fehlerfreier, wenn Sie direkt angewendet werden.
+
+* [Pandoc](): Das Schweizer-Taschenmesser der Textkonvertierung ([Handbuch](https://pandoc.org/MANUAL.html)).
+* [pdftotext](https://en.wikipedia.org/wiki/Pdftotext): Gängiges Kommandozeilentool zur PDF-Konvertierung. 
+
+#  `pdftotext`
+
+Batch Konvertierung auf der Kommandozeile:
+
+```bash
+for file in *.pdf; do pdftotext -nopgbrk $file ../GesetzeBayernTXT/${file/.pdf/.txt}; done
+```
+
+## HTML Konvertierung
+
+Hier bietet `rvest` eine gute Möglichkeit Daten aufzubereiten und Metadaten zu extrahieren.
+
+```{r}
+## Text
+read_html('../data/GesetzeBayernHTML/AkadGrAuslHsStV.html', encoding='utf8') %>% html_node('div.cont') %>% html_text()
+```
+
+```{r}
+## Gültig ab:
+read_html('../data/GesetzeBayernHTML/AkadGrAuslHsStV.html', encoding='utf8') %>% html_text() %>% str_match('Text gilt ab: (.+)')
+```
+
+```{r}
+texts <- c()
+titles <- c()
+validdates <- c()
+
+for (file in list.files('../data/GesetzeBayernHTML/', full.names=TRUE)) {
+    html <- read_html(file, encoding='utf8')
+    text <- html %>% html_node('div.cont') %>% html_text()
+    texts <- append(texts, text)
+    validdate <- html %>% html_text() %>% str_match('Text gilt ab: (.+)')
+    validdates <- append(validdates, validdate[,2])
+} 
+```
+
+```{r}
+text_df <- tibble(docs=list.files('../data/GesetzeBayernHTML/'), 
+                  validdate=validdates,
+                  text=texts)
+text_df
+```
+
+```{r}
+## Speichern
+
+write_csv(text_df, '../data/GesetzeBayernText.csv')
+```
+
+# Type und Token
+
+> In another sense of the word "word," however, there is but one word "the" in the English language; and it is impossible that this word should lie visibly on a page or be heard in any voice, for the reason that it is not a Single thing or Single event. It does not exist; it only determines things that do exist. Such a definitely significant Form, I propose to term a *Type*. A Single event which happens once and whose identity is limited to that one happening or a Single object or thing which is in some single place at any one instant of time, such event or thing being significant only as occurring just when and where it does, such as this or that word on a single line of a single page of a single copy of a book, I will venture to call a *Token*. 
+
+> (Peirce 1906: 505)
+
+## Token
+
+Tokens bilden die *einzelnen, sinntragenden Elemente* einer Zeichenkette. Whitespace und die Abgrenzung zwischen Sonderzeichen und Worten sind Abgrenzungen zwischen Token in natürlichen Sprachen. 
+
+```{r}
+alice <- '\'When I\'M a Duchess,\' she said to herself, (not in a very hopeful tone though), \'I won\'t have any pepper in my kitchen AT ALL. Soup does very well without--Maybe it\'s always pepper that makes people hot-tempered\'.'
+alice
+```
+
+```{r}
+show(str_split(alice, '\\s+'))
+```
+
+## Tokenisierung
+
+Zerlegung von Zeichenketten in einzelne Elemente.
+
+* Was wird als grundlegende Einheit ausgewählt?
+* Wieviele Ebenen sollen unterscheidbar sein?
+* Ist es sinnvoll Informationen weg zu lassen?
+
+## Tokenisierer
+
+Eine Vielzahl von Paketen bieten Funktionen zur Tokenisierer an. Es kann jedoch sinnvol und notwendig sein, eigene Tokenisierung durchzuführen oder den Prozess besser zu kontrollieren. In diesem Fall sind Reguläre Ausdrücke sehr nützlich.
+
+```{r}
+str_extract_all(alice, '\\w+[-\']?\\w*')
+```
+
+## Tidytext Vorgehen
+
+Tidytext und die damit einhergehenden Funktionen und Klassen zielen auf einen Umgang mit Text ab, der auf der `dplyr` Syntax aufbaut und vor allem die Vektorisierung von Funktionen in den Mittelpunkt stellt.
+
+Das Motto lautet: *Ein Token pro Dokument pro Zeile*!
+
+## Unnesting
+
+Die Standardfunktion zur Konstruktion einer tidytext kompatiblen Datenstruktur ist `unnest_tokens()`. Spezifische Tokenisierer können über das Schlüsselwortargument `token=` bereitgestellt werden.
+
+```{r}
+text_df %>% unnest_tokens(word, text)
+```
+
+```{r}
+?unnest_tokens
+```
+
+## `dplyr` Notation
+
+Aufbauend auf dem %>% (Pipe) Symbol. Reicht die Ausgabe der vorangegangenen Funktion oder des vorangegangenen Objekts an die nächste Funktion weiter. Erlaubt die schnelle Formulierung von Analysen erschwert jedoch gleichzeitig die Fehlersuche enorm. Ausführliche Dokumentation [hier](https://dplyr.tidyverse.org/).
+
+```{r}
+text_df %>% 
+  unnest_tokens(word, text) %>%  
+  count(word, sort = TRUE) %>%
+  filter(n > 200) %>%
+  mutate(word = reorder(word, n)) %>%
+  ggplot(aes(n, word)) +
+  geom_col() +
+  labs(y = NULL)
+```
+
+# Stemming und Lemmatisation
+
+## Ziel
+
+Bei diesen Verfahren geht es um die Rückführung auf die grammatikalische Grundformen. Dies kann entweder:
+
+* algorithmisch (z.B.: [Snowball-Stemmer](https://snowballstem.org/)) oder
+* lexikon-basiert (z.B.: [UDpipe und openNLP](https://ladal.edu.au/tagging.html) oder [TreeTagger](https://www.cis.lmu.de/~schmid/tools/TreeTagger/)) erfolgen.
+
+```{r}
+install.packages('SnowballC')
+```
+
+```{r}
+token_df <- text_df %>% 
+  unnest_tokens(word, text) %>%
+  mutate(stem=SnowballC::wordStem(word, language='de'))
+
+token_df
+```
+
+## POS-Tagging
+
+Verwandt mit der Lemmatisation. Ziel ist es eine Schätzung der grammatikalischen Funktion des jeweiligen Tokens zu erhalten. Siehe hierzu die [Dokumentation](https://www.rdocumentation.org/packages/koRpus/versions/0.13-8/topics/treetag) des TreeTagger Wrappers des `koRpus`-Pakets und die entsprechende [Vignette](https://cran.r-project.org/web/packages/koRpus/vignettes/koRpus_vignette.html).
+
+```{r}
+#install.packages('koRpus')
+#koRpus::install.koRpus.lang("de")
+## TreeTagger muss separat installiert werden!
+
+library('koRpus.lang.de')
+treetag('../data//GesetzeBayernTXT/AkadGrAuslHsStV.txt', 
+                treetagger='manual',
+                lang='de',
+                TT.options=list(path='~/.local/bin/treetagger/',
+                             preset='de'))
+```
+
+## Kommandozeile
+
+Auch hier empfiehlt es sich Werkzeuge wie [TreeTagger]() direkt über die Kommandozeile zu nutzen.
+
+```bash
+for file in *.txt; do tree-tagger-german $file 2> /dev/null | sed 's/^/'${file%.*}'\t/' - >> ../GesetzeBayernTTL.tsv; done
+```
+
+```{r}
+ttl_df <- read_tsv('../data/GesetzeBayernTTL.tsv', col_names=c('DocID', 'Token', 'Tag', 'Lemma'))
+```
+
+# References
+
+* Peirce, Charles S. 1906. “Prolegomena to an Apology for Pragmaticism.” The Monist 16 (4): 492–546.
+

@@ -1,0 +1,391 @@
+---
+title: An R Markdown document converted from "3_API_Crawling_Scraping.ipynb"
+output: html_document
+---
+
+**Text Mining in R**
+
+# Webcrawling, APIs und Webscraping
+
+Jan R. Riebling
+
+```{r}
+library(tidyverse)
+```
+
+# Interaktion mit Webressourcen
+
+## URL
+
+* [Uniform Ressource Locator](https://en.wikipedia.org/wiki/URL).
+* Spezifiziert das Übertragungsprotokoll sowie den Ort an dem eine bestimmte Ressource im Netzwerk zu finden ist.
+* Generelle Form:  
+```
+scheme://domain:port/path?query_string#fragment_id
+```
+
+* Hypertext Transfer Protocol: [http://www.example.org/wiki/Main_Page](http://www.example.org/wiki/Main_Page).
+
+## HTTP
+
+Zentrales [Protokoll](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol) zur Kommunikation mit Servern und Webservices. In R können Interaktionen mittels HTTP über das `httr` [Paket](https://httr.r-lib.org/) stattfinden. Zentrale Methoden:
+
+* GET: Fordert Zielressource auf eine Repräsentation des gegenwärtigen Zustandes zurückzusenden.
+* POST: Übermittelt ein Datenpaket und fordert die Zielressource auf dieses mittels der Semantik der Zielressource zu verarbeiten.
+
+## GET
+
+Beispiel: [Übersicht der Vorschriften auf gesetze-bayern.de](https://www.gesetze-bayern.de/Search/Filter/DOKTYP/norm).
+
+Einfachere Alternative:
+
+```R
+xml2::read_html(url)
+```
+
+```{r}
+url_base <- 'https://www.gesetze-bayern.de'
+url <- str_c(url_base, '/Search/Filter/DOKTYP/norm')
+url
+```
+
+```{r}
+response <- GET(url)
+```
+
+```{r}
+content(response)
+```
+
+```{r}
+raw_html <- content(response, 'text')
+print(raw_html)
+```
+
+```{r}
+## Print to file
+cat(raw_html, file='../data/bayern_recht_vorschriften_1.html')
+```
+
+# Webscraping
+
+## Screen scraping
+
+Daten vom Bildschirm „abkratzen“, d.h. Daten die dem Nutzer angezeigt werden. Da von Browsern dargestellte HTML-Dokumente eine der meistgenutzten Datenquellen sind, spricht man auch vom „web scraping“.
+
+## HyperText Markup Language
+
+Beschreibt die Semantik eines HTML-Dokuments. Besteht aus einem *Baum* einzelner HTML-Elemente. Jedes Element besteht aus drei Teilen:
+
+```html
+<a href="https://www.wikipedia.org/">A link to Wikipedia!</a>
+```
+
+1. Die $\color{green}{\mathit{Tags}}$, die das Element eröffnen und schließen.
+2. Die $\color{blue}{\mathit{Attribute}}$ des Elements, die sich innerhalb des eröffnenden Tags finden und deren dazugehöriger $\color{red}{\mathit{Wert}}$.
+3. Der $\mathit{Text}$ der „marked up“ werden soll. 
+
+<a href="https://www.wikipedia.org/">A link to Wikipedia!</a>
+
+## Formaler Aufbau
+
+HTML Dokumente sind als Baumgraphen aufgebaut, d.h. sie beginnen in einer Wurzel (root) und breiten sich über Zweige (branches) aus. Daher kann jeder Knoten dieses Baumgraphs über einen eineindeutigen Pfad angesteuert werden. 
+
+## Ein Baum:
+
+![A tree](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Binary_tree.svg/300px-Binary_tree.svg.png)
+
+## Parsen
+
+Mittels des `rvest` [Pakets](https://www.rdocumentation.org/packages/rvest/versions/1.0.3) können Knoten in einem geparsten HTML-Dokument spezifiziert werden. Zur Spezifikation werden CSS Selektoren verwendet.
+
+## CSS Selector
+
+Das Cascading Style eines HTML-Dokuments gibt an, welche Formatierung an welchem Knotenpunkt gelten soll. Daher kann die Syntax von CSS Selektoren genutzt werden um Knoten im Graphen des HTML-Dokuments zu spezifizieren. Eine knappe Einführung in die Syntax findet sich [hier](https://en.wikipedia.org/wiki/CSS#Selector) und [hier](https://www.w3schools.com/CSS/css_selectors.asp). 
+
+Das Auffinden von Elementen mittels CSS Selektoren kann durch entsprechende Browsererweiterungen erleichtert werden (z.B.: [SelectorGadget](https://selectorgadget.com/)).
+
+## Knoten ansteuern
+
+```{r}
+## gesetz-bayern.de auf Dokumente weiter verweisende links:
+html <- content(response) 
+
+html %>% html_nodes('div.hltitel a')
+```
+
+## Attribut aufrufen
+
+```{r}
+html %>% html_nodes('div.hltitel a') %>% html_attr('href')
+```
+
+## Weiterführende URL konstruieren
+
+```{r}
+links <- html %>% html_nodes('div.hltitel a') %>% html_attr('href')
+
+str_c(url_base, links)
+```
+
+# Webcrawling
+
+## Vorgehen
+
+1. Basis-URL festlegen (*seed*).
+2. Weiterführende Links identifizieren (*crawl frontier*).
+3. Regeln zur Auswahl spezifischer Hyperlinks (*policies*).
+
+Dieser Vorgang wird rekursiv gemacht indem die ausgewählten Links als Ausgangslage für den nächsten Crawlvorgang herangezogen werden.
+
+## Benimmregeln
+
+Immer mit der Rechtslage des jeweiligen Landes (eigener Standort und Server) vertraut sein! Unbedingt die Terms of Service beachten!
+
+Zusätzlich:
+
+* Nur so viel, wie man braucht!
+* Crawlzeiten sollten möglichst an die Bedürfnisse des Servers und der jeweiligen Community angepasst sein. Ruhezeiten sollten eingeplant werden.
+* Reduktion der Serverlast soweit wie möglich!
+* Anständig bleiben! Belästigung oder Schaden für die Nutzer des Webdienstes sollten unbedingt vermieden werden.
+* Privatsphäre achten!
+
+## Beispiel: [gesetze-bayern.de](https://www.gesetze-bayern.de/Search/Filter/DOKTYP/norm)
+
+* Aufgabe: Herunterladen aller Vorschriften.
+
+## Tips und Tricks
+
+* Aufbau der Webseite studieren.
+* Auschau nach fortlaufenden Nummern halten.
+* Gibt es Archiv oder Überblicksseiten.
+
+## Seed konstruieren
+
+Ausgehend von https://www.gesetze-bayern.de/Search/Filter/DOKTYP/norm sollen die URLs der Einzeldokumente ermittelt werden.
+
+Problem: Die Suchanfrage braucht zusätzliche Informationen, die nicht in der URL kodiert sind, sondern serverseitig verwaltet werden.
+
+## Stabile Verbindung
+
+Um die selben Cookies und Hintergrundaten über mehrer Verbindungen zu erhalten kann `httr::handle()` genutzt werden. Dies wird standardmäßig von `httr` angenommen, aber es kann dennoch sinnvoll sein den Handle explizit zu setzen.
+
+```{r}
+h <- handle('https://www.gesetze-bayern.de')
+
+response <- GET('https://www.gesetze-bayern.de/Search/Filter/DOKTYP/norm', handle=h)
+```
+
+## URLs konstruieren
+
+Nur die ersten zehn um das Vorgehen zu verdeutlichen. 
+
+```{r}
+seeds <- str_c('https://www.gesetze-bayern.de/Search/Page/', c(1:10))
+seeds
+```
+
+## URLs der Dokumente
+
+```{r}
+frontier <- c()
+
+for (url in seeds) {
+    html <- content(GET(url, handle=h))
+    links <- html %>% html_nodes('div.hltitel a') %>% html_attr('href')
+    frontier <- append(frontier, str_c(url_base, links))
+}
+```
+
+```{r}
+frontier
+```
+
+## Download
+
+In zwei Formaten, als HTML und als PDFs.
+
+## HTML
+
+Problem: Die heruntergeladenen URLs zeigen nur eine Vorschau der Publikation.
+
+```{r}
+frontier[1]
+```
+
+## Dokument IDs extrahieren
+
+```{r}
+str_match(frontier, '.+/(.+)\\?')
+```
+
+```{r}
+doc_ids <- str_match(frontier, '.+/(.+)\\?')[,2]
+doc_ids
+```
+
+## HTML Gesamtansicht
+
+```{r}
+for (doc_id in doc_ids) {
+    url <- str_c('https://www.gesetze-bayern.de/Content/Document/', doc_id, '/true')
+    html_text <- content(GET(url), 'text')
+    cat(html_text, file=str_c('../data/GesetzeBayernHTML/', doc_id, '.html'))
+}
+```
+
+## PDFs herunterladen
+
+```{r}
+response_log <- c()
+
+for (doc_id in doc_ids) {
+    url <- str_c('https://www.gesetze-bayern.de/Content/Pdf/', doc_id, '?all=True')
+    response <- GET(url, write_disk(str_c('../data/GesetzeBayernPDF/', doc_id, '.pdf'), overwrite=TRUE))
+    response_log <- append(response_log, response)
+}
+```
+
+# Application Programming Interface
+
+## API
+
+* Schnittstelle zur Interaktion zwischen Programmen oder Programmen und Servern.
+* WebAPIs:
+    * Abruf/Veränderung von Ressourcen (GET vs. POST).
+    * Client-Server Beziehung.
+    * Vermittelt durch HTTP.
+    * Daten meist in Form der Webstandards für Dokumente (z.B. JSON oder XML).
+* Für viele APIs ist eine vorherige Anmeldung notwendig.
+
+![Munzert et al. 2015: 259](../figures/munzert_et_al_2015_p259_api.PNG)
+*Munzert et al. 2015: 259. Automated Data Collection with R.*
+
+##  Funktionsweise
+
+* Aufbau einer HTTP Anfrage entsprechend dem URL Schema.
+    * Konkrete Anfrage geschieht über `?query_string`.
+    * Übersetzung von Programmcode in die spezifische Anfrage
+* Änderung des Zustands des Servers oder Abrufen von Daten
+* Übersetzung der Daten in Elemente der Programmumgebung
+
+
+```
+scheme://domain:port/path?query_string#fragment_id
+```
+
+## API Wrappers
+
+Zwar ist es immer möglich eine direkte Anfrage an den Server zu schicken (z.B. mittels `httr`), doch in vielen Fällen bietet sich die einfachere Variante an einen bereits bestehenden „Wrapper“ zu benutzen. Dabei handelt es sich um Abstraktionen, welche die Interaktion mit der API übernehmen. Um einen solchen Wrapper zu finden ist es meistens ausreichend eine Suchanfrage der Art:
+
+```
+<Name der Anwendung> R api
+```
+
+zu stellen.
+
+# Beispiel: World Bank Indicators 
+
+## World Bank Indicators
+
+* Offen zugängliche Datensätze der Weltbank.
+* Dokumentation: [http://data.worldbank.org/developers/api-overview](http://data.worldbank.org/developers/api-overview).
+* Beispiel R Wrapper:
+    * `wbstats`.
+    * `WDI`.
+
+## Manuelles Vorgehen
+
+1. Konstruktion der URL.
+2. Daten anfragen.
+3. Daten parsen.
+
+## Parameter:
+
+* Daten für GDP per capita.
+* Für die Länder:
+    * Mexiko
+    * Kanada
+    * USA
+* Jahre: 1960 bis 2012.
+
+## 1. Konstruktion der URL
+
+Öffentliche APIs haben für gewöhnlich auch eine [Dokumentation](https://datahelpdesk.worldbank.org/knowledgebase/articles/889392-api-documentation).
+
+Basis ist eine URL die mit verschiedenen `query` Parametern modifiziert wird:
+
+
+`http://api.worldbank.org/v2/country/`\<iso2/3-countries>`/indicator/`\<indicator-code>`?`\<query>
+
+```{r}
+## Mexiko, Kanada und USA gdp per capita
+url <- 'http://api.worldbank.org/v2/countries/mx;ca;us/indicators/NY.GDP.PCAP.CD?date=1960:2012&format=JSON'
+```
+
+## 2. Daten anfragen
+
+Mit `httr` lässt sich eine GET Anfrage stellen. Zusätzlich zur URL können hier auch `query` Parameter angegeben werden.
+
+```{r}
+## Eingrenzen der Jahre auf 1960 bis 2012 und Rückgabeformat=JSON
+response <- GET(url, query=list(date='1960:2012', format='JSON'))
+```
+
+Komplette URL:
+
+http://api.worldbank.org/v2/countries/mx;ca;us/indicators/NY.GDP.PCAP.CD?date=1960:2012&format=JSON
+
+## 3. Daten parsen
+
+Die erhaltenen JSON Daten in interne `R` Datentypen transferieren. Hierfür kann der in `httr` integrierte Parser genutzt werden.
+
+```{r}
+(content(response, 'parsed'))
+```
+
+## Einsatz eines Wrappers
+
+```{r}
+library(WDI)
+```
+
+```{r}
+## WDIsearch akzeptiert RegEx
+WDIsearch('gdp.*capita.*constant')
+```
+
+```{r}
+data <- WDI(indicator = 'NY.GDP.PCAP.KD', 
+           country = c('MX','CA','US'), 
+           start = 1960, 
+           end = 2012)
+
+data
+```
+
+```{r}
+library(ggplot2)
+ggplot(data, aes(year, NY.GDP.PCAP.KD, color=country)) + 
+  geom_line() + 
+  xlab('Year') + 
+  ylab('GDP per capita')
+```
+
+# EUR-LEX API
+
+## Prozedere
+
+* Es ist sowohl ein User-Account bei EUR-LEX als auch eine Beantragung zur Freischaltung der API notwendig. Nähere Informationen finden sich [hier](https://eur-lex.europa.eu/content/help/data-reuse/webservice.html).
+* Dokumentation der Zugänge:
+    * [EUR-LEX Data Extraction Using Web Services](https://eur-lex.europa.eu/content/tools/webservices/DataExtractionUsingWebServices-v1.00.pdf).
+    * [Web Service User Manual](https://eur-lex.europa.eu/content/tools/webservices/SearchWebServiceUserManual_v2.00.pdf).
+
+## SOAP Envelope
+
+Der Zugang zur EUR-LEX API funktioniert mittels des [SOAP](https://de.wikipedia.org/wiki/SOAP) Envelope Verfahrens. Hierbei muss eine zusätzliches XML Objekt mit einer POST-Anfrage verschickt werden. Ein potentielles Vorgehen findet sich [hier](https://stackoverflow.com/questions/62668337/how-to-do-a-soap-request-for-eur-lex-api-with-r).
+
+## SparQL
+
+Alternativ besteht die Möglichkeit eine [SparQL](https://en.wikipedia.org/wiki/SPARQL) Suchanfrage über die [Webtools](https://op.europa.eu/en/web/webtools/linked-data-and-sparql) des Publication Office of the European Union zu stellen.
+
