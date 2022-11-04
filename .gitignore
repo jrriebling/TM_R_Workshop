@@ -1,6 +1,5 @@
 **/Notiz*
-
+**/*.pdf
 **/.ipynb_checkpoints/
 **/.RData
 **/.Rhistory
-**/*.pdf
