@@ -1,3 +1,4 @@
+.gitignore
 **/Notiz*
 **/*.pdf
 **/.ipynb_checkpoints/
